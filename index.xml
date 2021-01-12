@@ -1,0 +1,30 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Wlight</title>
+        <link>https://wlight.github.io/</link>
+        <description>关于 LoveIt 主题</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 Jan 2021 16:04:09 &#43;0800</lastBuildDate>
+            <atom:link href="https://wlight.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Markdown 基本语法</title>
+    <link>https://wlight.github.io/basic-markdown-syntax/</link>
+    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://wlight.github.io/basic-markdown-syntax/</guid>
+    <description><![CDATA[<p>这篇文章提供了可以在 Hugo 的文章中使用的基本 Markdown 语法示例.</p>]]></description>
+</item><item>
+    <title>Emoji 支持</title>
+    <link>https://wlight.github.io/emoji-support/</link>
+    <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://wlight.github.io/emoji-support/</guid>
+    <description><![CDATA[<p>Emoji 可以通过多种方式在 Hugo 项目中启用.</p>]]></description>
+</item><item>
+    <title>我的第一篇博客</title>
+    <link>https://wlight.github.io/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</link>
+    <pubDate>Tue, 12 Jan 2021 16:04:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://wlight.github.io/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>
