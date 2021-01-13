@@ -2,18 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://wlight.github.io/posts/</loc><lastmod>2021-01-13T11:07:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://wlight.github.io/</loc><lastmod>2021-01-13T11:07:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://wlight.github.io/basic-markdown-syntax/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/"
+                        href="https://wlight.github.io/en/basic-markdown-syntax/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/"
+                    href="https://wlight.github.io/basic-markdown-syntax/"
                     /></url><url>
-            <loc>https://wlight.github.io/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc><lastmod>2021-01-13T11:07:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://wlight.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://wlight.github.io/categories/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wlight.github.io/en/categories/"
@@ -22,7 +20,17 @@
                     hreflang="zh-cn"
                     href="https://wlight.github.io/categories/"
                     /></url><url>
-            <loc>https://wlight.github.io/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://wlight.github.io/tags/github/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/posts/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wlight.github.io/en/posts/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wlight.github.io/posts/"
+                    /></url><url>
+            <loc>https://wlight.github.io/tags/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wlight.github.io/en/tags/"
@@ -30,4 +38,46 @@
                     rel="alternate"
                     hreflang="zh-cn"
                     href="https://wlight.github.io/tags/"
+                    /></url><url>
+            <loc>https://wlight.github.io/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wlight.github.io/en/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wlight.github.io/"
+                    /></url><url>
+            <loc>https://wlight.github.io/categories/%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/tags/hugo/</loc><lastmod>2021-01-13T14:07:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/categories/hugo/</loc><lastmod>2021-01-13T14:07:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</loc><lastmod>2021-01-13T14:07:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc><lastmod>2021-01-13T11:07:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://wlight.github.io/tags/html/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wlight.github.io/en/tags/html/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wlight.github.io/tags/html/"
+                    /></url><url>
+            <loc>https://wlight.github.io/tags/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wlight.github.io/en/tags/markdown/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wlight.github.io/tags/markdown/"
+                    /></url><url>
+            <loc>https://wlight.github.io/categories/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wlight.github.io/en/categories/markdown/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wlight.github.io/categories/markdown/"
                     /></url></urlset>

@@ -3,9 +3,30 @@
         <title>携壶酌流霞</title>
         <link>https://wlight.github.io/</link>
         <description>书山有路勤为径，学海无涯苦作舟</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 13 Jan 2021 11:07:21 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 13 Jan 2021 14:20:10 &#43;0800</lastBuildDate>
             <atom:link href="https://wlight.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Markdown 基本语法</title>
+    <link>https://wlight.github.io/basic-markdown-syntax/</link>
+    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://wlight.github.io/basic-markdown-syntax/</guid>
+    <description><![CDATA[<p>这篇文章提供了可以在 Hugo 的文章中使用的基本 Markdown 语法示例.</p>]]></description>
+</item><item>
+    <title>解决GitHub clone repo太慢的问题</title>
+    <link>https://wlight.github.io/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+    <pubDate>Wed, 13 Jan 2021 14:20:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://wlight.github.io/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+    <description><![CDATA[引言 今天拉取自己GitHub上的repo，发现特别特别的慢，搜索了各种方法，例如：修改Host文件，感觉明显不靠谱。自己一直在使用代理，感觉]]></description>
+</item><item>
+    <title>Hugo博客配置教程</title>
+    <link>https://wlight.github.io/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</link>
+    <pubDate>Wed, 13 Jan 2021 14:07:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://wlight.github.io/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</guid>
+    <description><![CDATA[创建博客所需 repo 假设你在 GitHub 上的用户名是 abcd，那么在 GitHub 上创建下面两个 repo： 一个叫 blog，用于存放 Hugo 博客的原始文件，包括博客配置，文章的]]></description>
+</item><item>
     <title>第一篇文章</title>
     <link>https://wlight.github.io/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</link>
     <pubDate>Wed, 13 Jan 2021 11:07:21 &#43;0800</pubDate>
