@@ -8,10 +8,6 @@
                         hreflang="en"
                         href="https://wlight.github.io/en/"
                         /><xhtml:link
-                        rel="alternate"
-                        hreflang="fr"
-                        href="https://wlight.github.io/fr/"
-                        /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
                     href="https://wlight.github.io/"
@@ -22,10 +18,6 @@
                         hreflang="en"
                         href="https://wlight.github.io/en/categories/"
                         /><xhtml:link
-                        rel="alternate"
-                        hreflang="fr"
-                        href="https://wlight.github.io/fr/categories/"
-                        /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
                     href="https://wlight.github.io/categories/"
@@ -34,10 +26,6 @@
                         rel="alternate"
                         hreflang="en"
                         href="https://wlight.github.io/en/tags/"
-                        /><xhtml:link
-                        rel="alternate"
-                        hreflang="fr"
-                        href="https://wlight.github.io/fr/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"

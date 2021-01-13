@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - Wlight</title>
+        <title>所有文章 - 携壶酌流霞</title>
         <link>https://wlight.github.io/posts/</link>
-        <description>所有文章 | Wlight</description>
+        <description>所有文章 | 携壶酌流霞</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 13 Jan 2021 11:07:21 &#43;0800</lastBuildDate><atom:link href="https://wlight.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>第一篇文章</title>
     <link>https://wlight.github.io/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</link>
