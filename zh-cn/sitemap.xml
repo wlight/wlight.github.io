@@ -2,15 +2,6 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://wlight.github.io/basic-markdown-syntax/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://wlight.github.io/en/basic-markdown-syntax/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://wlight.github.io/basic-markdown-syntax/"
-                    /></url><url>
             <loc>https://wlight.github.io/categories/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
@@ -81,4 +72,13 @@
                     rel="alternate"
                     hreflang="zh-cn"
                     href="https://wlight.github.io/categories/markdown/"
+                    /></url><url>
+            <loc>https://wlight.github.io/basic-markdown-syntax/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wlight.github.io/en/basic-markdown-syntax/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wlight.github.io/basic-markdown-syntax/"
                     /></url></urlset>
