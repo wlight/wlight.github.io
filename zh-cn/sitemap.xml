@@ -2,88 +2,88 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://wlight.github.io/posts/</loc><lastmod>2021-01-25T15:58:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/posts/</loc><lastmod>2021-01-25T15:58:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/posts/"
+                        href="https://blog.wormlight.cn/en/posts/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/posts/"
+                    href="https://blog.wormlight.cn/posts/"
                     /></url><url>
-            <loc>https://wlight.github.io/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</loc><lastmod>2021-01-25T15:58:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://wlight.github.io/</loc><lastmod>2021-01-25T15:58:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</loc><lastmod>2021-01-25T15:58:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/</loc><lastmod>2021-01-25T15:58:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/"
+                        href="https://blog.wormlight.cn/en/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/"
+                    href="https://blog.wormlight.cn/"
                     /></url><url>
-            <loc>https://wlight.github.io/categories/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/categories/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/categories/"
+                        href="https://blog.wormlight.cn/en/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/categories/"
+                    href="https://blog.wormlight.cn/categories/"
                     /></url><url>
-            <loc>https://wlight.github.io/tags/go/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/categories/go/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/tags/leetcode/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/leetcode01_%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/tags/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/tags/go/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/categories/go/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/tags/leetcode/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/leetcode01_%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/tags/</loc><lastmod>2021-01-19T10:32:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/tags/"
+                        href="https://blog.wormlight.cn/en/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/tags/"
+                    href="https://blog.wormlight.cn/tags/"
                     /></url><url>
-            <loc>https://wlight.github.io/tags/hugo/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/categories/hugo/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/typora-picgo-core-github%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%88%B0github/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/tags/github/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/categories/%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</loc><lastmod>2021-01-13T14:07:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc><lastmod>2021-01-13T11:07:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://wlight.github.io/tags/html/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/tags/hugo/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/categories/hugo/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/typora-picgo-core-github%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%88%B0github/</loc><lastmod>2021-01-13T16:10:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/tags/github/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/categories/%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</loc><lastmod>2021-01-13T14:20:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</loc><lastmod>2021-01-13T14:07:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc><lastmod>2021-01-13T11:07:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://blog.wormlight.cn/tags/html/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/tags/html/"
+                        href="https://blog.wormlight.cn/en/tags/html/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/tags/html/"
+                    href="https://blog.wormlight.cn/tags/html/"
                     /></url><url>
-            <loc>https://wlight.github.io/tags/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/tags/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/tags/markdown/"
+                        href="https://blog.wormlight.cn/en/tags/markdown/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/tags/markdown/"
+                    href="https://blog.wormlight.cn/tags/markdown/"
                     /></url><url>
-            <loc>https://wlight.github.io/categories/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/categories/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/categories/markdown/"
+                        href="https://blog.wormlight.cn/en/categories/markdown/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/categories/markdown/"
+                    href="https://blog.wormlight.cn/categories/markdown/"
                     /></url><url>
-            <loc>https://wlight.github.io/basic-markdown-syntax/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/basic-markdown-syntax/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://wlight.github.io/en/basic-markdown-syntax/"
+                        href="https://blog.wormlight.cn/en/basic-markdown-syntax/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://wlight.github.io/basic-markdown-syntax/"
+                    href="https://blog.wormlight.cn/basic-markdown-syntax/"
                     /></url></urlset>
