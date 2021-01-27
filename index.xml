@@ -3,9 +3,16 @@
         <title>携壶酌流霞</title>
         <link>https://blog.wormlight.cn/</link>
         <description>书山有路勤为径，学海无涯苦作舟</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 25 Jan 2021 15:58:03 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 27 Jan 2021 10:01:43 &#43;0800</lastBuildDate>
             <atom:link href="https://blog.wormlight.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>LeetCode69求平方根</title>
+    <link>https://blog.wormlight.cn/leetcode69_%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/</link>
+    <pubDate>Wed, 27 Jan 2021 10:01:43 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.wormlight.cn/leetcode69_%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/</guid>
+    <description><![CDATA[题目 实现 int sqrt(int x) 函数。 计算并返回 x 的平方根，其中 x 是非负整数。 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。 示例 1: 输入: 4 输出:]]></description>
+</item><item>
     <title>二分查找</title>
     <link>https://blog.wormlight.cn/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
     <pubDate>Mon, 25 Jan 2021 15:58:03 &#43;0800</pubDate>
