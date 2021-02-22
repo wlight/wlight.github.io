@@ -76,7 +76,7 @@ picgo install github-plus
 
    根据上述配置完毕后我们需要进行测试链接是否成功，在测试之前还要进行如图所示的修改：
 
-   ![https://cdn.jsdelivr.net/gh/jxiaow/cdn-images@latest/blog-images/image-20201105224420441.png](https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/image-20201105224420441.png)
+   ![https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/image-20201105224420441.png](https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/image-20201105224420441.png)
 
 3. **上传服务**修改为`Custom Command`
 
@@ -86,7 +86,7 @@ picgo install github-plus
 
 6. 如果显示验证成功，则表示配置完成。
 
-![https://cdn.jsdelivr.net/gh/jxiaow/cdn-images@latest/blog-images/image-20201105225415181.png](https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/image-20201105225415181.png)
+![https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/image-20201105225415181.png](https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/image-20201105225415181.png)
 
 ## **图片上传**
 

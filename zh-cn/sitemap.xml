@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.wormlight.cn/categories/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/categories/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://blog.wormlight.cn/en/categories/"
@@ -11,8 +11,9 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/categories/"
                     /></url><url>
-            <loc>https://blog.wormlight.cn/tags/go/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://blog.wormlight.cn/posts/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/tags/ios/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/ios%E5%88%9B%E5%BB%BA%E6%B3%95%E5%AE%9A%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/posts/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://blog.wormlight.cn/en/posts/"
@@ -21,7 +22,7 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/posts/"
                     /></url><url>
-            <loc>https://blog.wormlight.cn/tags/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/tags/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://blog.wormlight.cn/en/tags/"
@@ -30,8 +31,8 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/tags/"
                     /></url><url>
-            <loc>https://blog.wormlight.cn/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%8F%98%E4%BD%93/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://blog.wormlight.cn/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/categories/%E5%B7%A5%E5%85%B7/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/</loc><lastmod>2021-02-20T16:17:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://blog.wormlight.cn/en/"
@@ -40,6 +41,8 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/"
                     /></url><url>
+            <loc>https://blog.wormlight.cn/tags/go/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://blog.wormlight.cn/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%8F%98%E4%BD%93/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>https://blog.wormlight.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>https://blog.wormlight.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</loc><lastmod>2021-01-28T13:52:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>https://blog.wormlight.cn/categories/go/</loc><lastmod>2021-01-27T10:01:43&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
