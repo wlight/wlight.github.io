@@ -7,12 +7,11 @@
 iOS上设置闹钟没办法按照国家法定节假日来设置，网上搜索了很多办法，都不是很好，最后发现使用快捷指令这个可以做到，就学习了一下。
 - 解决过程
 
-先查找了一下官方文档，学习了一下基本的操作流程，发现这个和程序开发的流程特别像，可以学习一下，锻炼自己的编程思维。
-[快捷指令官方文档](https://support.apple.com/zh-cn/guide/shortcuts/welcome/ios)
+先查找了一下[快捷指令官方文档](https://support.apple.com/zh-cn/guide/shortcuts/welcome/ios)，学习了一下基本的操作流程，发现这个和程序开发的流程特别像，可以学习一下，锻炼自己的编程思维。
 
 - 操作步骤
 
-1. 设置一个每天的响的闹钟，闹钟标签改为“工作日”
+1. 设置一个每天的响的闹钟，闹钟标签改为""工作日”
 
    ![创建闹钟](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/创建闹钟.jpg)
 
