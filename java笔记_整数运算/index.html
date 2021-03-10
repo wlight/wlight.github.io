@@ -5,37 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>解决GitHub clone repo太慢的问题 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="解决GitHub clone repo太慢的问题" />
-<meta property="og:description" content="引言 今天拉取自己GitHub上的repo，发现特别特别的慢，搜索了各种方法，例如：修改Host文件，感觉明显不靠谱。自己一直在使用代理，感觉" />
+        <title>Java笔记_整数运算 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="Java笔记_整数运算" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" />
+<meta property="og:url" content="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" />
 <meta property="og:image" content="https://blog.wormlight.cn/logo.png"/>
-<meta property="article:published_time" content="2021-01-13T14:20:10+08:00" />
-<meta property="article:modified_time" content="2021-01-13T14:20:10+08:00" />
+<meta property="article:published_time" content="2021-03-10T16:30:04+08:00" />
+<meta property="article:modified_time" content="2021-03-10T16:30:04+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.wormlight.cn/logo.png"/>
 
-<meta name="twitter:title" content="解决GitHub clone repo太慢的问题"/>
-<meta name="twitter:description" content="引言 今天拉取自己GitHub上的repo，发现特别特别的慢，搜索了各种方法，例如：修改Host文件，感觉明显不靠谱。自己一直在使用代理，感觉"/>
+<meta name="twitter:title" content="Java笔记_整数运算"/>
+<meta name="twitter:description" content=""/>
 <meta name="application-name" content="携壶酌流霞">
 <meta name="apple-mobile-web-app-title" content="携壶酌流霞"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" /><link rel="prev" href="https://blog.wormlight.cn/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" /><link rel="next" href="https://blog.wormlight.cn/typora-picgo-core-github%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%88%B0github/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" /><link rel="prev" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "解决GitHub clone repo太慢的问题",
+        "headline": "Java笔记_整数运算",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.wormlight.cn\/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98\/"
+            "@id": "https:\/\/blog.wormlight.cn\/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "https:\/\/blog.wormlight.cn\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "GitHub","wordcount":  459 ,
-        "url": "https:\/\/blog.wormlight.cn\/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98\/","datePublished": "2021-01-13T14:20:10+08:00","dateModified": "2021-01-13T14:20:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "java","wordcount":  667 ,
+        "url": "https:\/\/blog.wormlight.cn\/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97\/","datePublished": "2021-03-10T16:30:04+08:00","dateModified": "2021-03-10T16:30:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -57,7 +57,7 @@
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
-                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" selected>简体中文</option></select>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" selected>简体中文</option></select>
                     </a><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
@@ -104,7 +104,7 @@
                 </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header>
@@ -118,10 +118,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">解决GitHub clone repo太慢的问题</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wormside</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-13">2021-01-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 459 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" class="leancloud_visitors" data-flag-title="解决GitHub clone repo太慢的问题">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java笔记_整数运算</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wormside</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>Java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-10">2021-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 667 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" class="leancloud_visitors" data-flag-title="Java笔记_整数运算">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -131,42 +131,54 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#整数运算">整数运算</a>
       <ul>
-        <li><a href="#引言">引言</a></li>
-        <li><a href="#解决办法">解决办法</a></li>
+        <li>
+          <ul>
+            <li><a href="#基本运算">基本运算</a></li>
+            <li><a href="#溢出">溢出</a></li>
+            <li><a href="#自增自减">自增/自减</a></li>
+            <li><a href="#移位运算">移位运算</a></li>
+            <li><a href="#位运算">位运算</a></li>
+            <li><a href="#运算优先级">运算优先级</a></li>
+            <li><a href="#类型自动提升与强制转型">类型自动提升与强制转型</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="引言">引言</h3>
-<p>今天拉取自己GitHub上的repo，发现特别特别的慢，搜索了各种方法，例如：修改Host文件，感觉明显不靠谱。自己一直在使用代理，感觉还是得通过代理来解决，最后功夫不负有心人，通过了代理的方式解决了这个一直以来的问题。</p>
-<blockquote>
-<p>注：前提要有梯子，我是使用了池大推荐的一个梯子：<a href="https://ageneo.org/" target="_blank" rel="noopener noreffer">Ageneo</a>，一直感觉挺好用的，</p>
-</blockquote>
-<h3 id="解决办法">解决办法</h3>
-<p>我的代理客户端使用的是：clash for windows，开始想着切换到全局模式，git 应该就快了，但 clone 依然很慢，搜索后发现，git 命令并不会直接走全局代理，而是走自己默认的配置，修改这个配置的方法如下：</p>
+            </div><div class="content" id="content"><h2 id="整数运算">整数运算</h2>
+<h4 id="基本运算">基本运算</h4>
+<p>遵循四则运算法则</p>
+<p>整数的数值表示时精确的，整数运算也永远是精确的，即使是除法也是精确的（两数相除只取整数部分）</p>
+<p>相除</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">git config --global http.proxy &lt;http://127.0.0.1:7890&gt;
-git config --global https.proxy &lt;https://127.0.0.1:7890&gt;
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">12345</span><span class="o">/</span><span class="n">67</span><span class="o">;</span> <span class="c1">// 184
+</span></code></pre></td></tr></table>
 </div>
-</div><p>端口号获取的方式如下：</p>
-<p>Windows中打开”网络和 Internet“→&quot;代理&quot;→&quot;手动设置代理&rdquo;，查看代理端口号，上面的命令修改为自己的端口号即可。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/windows_config.png"
-        data-srcset="https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/windows_config.png, https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/windows_config.png 1.5x, https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/windows_config.png 2x"
-        data-sizes="auto"
-        alt="https://raw.githubusercontent.com/wlight/cdn-images/main/blog-images/windows_config.png"
-        title="windows_config" /></p>
-<p>设置好以后就可以clone了，这次速度上来了，特别快。</p>
+</div><p>求余</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">12345</span> <span class="o">%</span> <span class="n">67</span><span class="o">;</span> <span class="c1">// 余数17
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>整数的除法对于除数为0时运行时将报错，但编译不会报错</p>
+</blockquote>
+<h4 id="溢出">溢出</h4>
+<p>整数由于存在范围限制，如果计算结果超出了范围，就会产生溢出，而溢出不会报错，却会得到一个奇怪的结果</p>
+<p>解决溢出问题，把int换成long类型</p>
+<h4 id="自增自减">自增/自减</h4>
+<p>++ &ndash;</p>
+<h4 id="移位运算">移位运算</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -174,48 +186,74 @@ git config --global https.proxy &lt;https://127.0.0.1:7890&gt;
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">PS D:<span class="se">\\</span>study<span class="se">\\</span>go<span class="se">\\</span>hugo<span class="se">\\</span>sites<span class="se">\\</span>blog&gt; git submodule add &lt;https://github.com/dillonzq/LoveIt.git&gt; .<span class="se">\\</span>themes<span class="se">\\</span>LoveIt
-Cloning into <span class="s1">&#39;D:/study/go/hugo/sites/blog/.\\themes\\LoveIt&#39;</span>...
-remote: Enumerating objects: 9952, <span class="k">done</span>.
-remote: Total <span class="m">9952</span> <span class="o">(</span>delta 0<span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>, pack-reused 9952R
-Receiving objects: 100% <span class="o">(</span>9952/9952<span class="o">)</span>, 36.96 MiB <span class="p">|</span> 1.83 MiB/s, <span class="k">done</span>.
-Resolving deltas: 100% <span class="o">(</span>4953/4953<span class="o">)</span>, <span class="k">done</span>.
-warning: LF will be replaced by CRLF in .gitmodules.
-The file will have its original line endings in your working directory
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">7</span><span class="o">;</span>	<span class="c1">// 000000000 000000000 000000000 00000111 = 7
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">;</span> <span class="c1">// 左移一位，00000000 000000000 00000000 00001110 = 14
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">2</span><span class="o">;</span> <span class="c1">// 左移两位，00000000 000000000 00000000 00011100 = 28
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">28</span><span class="o">;</span> <span class="c1">// 左移28位，01110000 000000000 00000000 0000000 = 1879048192
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&lt;&lt;</span> <span class="n">29</span><span class="o">;</span> <span class="c1">// 左移29位，11100000 00000000 00000000 00000000 = -536870912，最高位为1，因此结果变成了负数
+</span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><p>无符号位右移运算<code>&gt;&gt;&gt;</code></p>
+<p>byte 和<code>short</code>类型进行移位时，会首先转换为int再进行</p>
+<blockquote>
+<p>其实，左移就是不断的x2，右移就是不断的/2</p>
+</blockquote>
+<h4 id="位运算">位运算</h4>
+<p>位运算就是按位进行与（&amp;）、或（|）、非（^）和异或的运算</p>
+<h4 id="运算优先级">运算优先级</h4>
+<ul>
+<li><code>()</code></li>
+<li><code>!</code> <code>~</code> <code>++</code> <code>--</code></li>
+<li><code>*</code> <code>/</code> <code>%</code></li>
+<li><code>+</code> <code>-</code></li>
+<li><code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code></li>
+<li><code>&amp;</code></li>
+<li><code>|</code></li>
+<li><code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code></li>
+</ul>
+<h4 id="类型自动提升与强制转型">类型自动提升与强制转型</h4>
+<p>在运算过程中，如果参与运算的两个数类型不一致，那么计算结果为较大类型的整型。例如，<code>short</code>和<code>int</code>计算，结果总是<code>int</code>，原因是<code>short</code>首先自动被转型为<code>int</code></p>
+<p>强制转型使用<code>(类型)</code>，例如，将<code>int</code>强制转型为<code>short</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">12345</span><span class="o">;</span>
+<span class="kt">short</span> <span class="n">s</span> <span class="o">=</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="n">i</span><span class="o">;</span> <span class="c1">// 12345
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>要注意，超出范围的强制转型会得到错误的结果，原因是转型时，<code>int</code>的两个高位字节直接被扔掉，仅保留了低位的两个字节，强制转型的结果很可能是错的</p>
+</blockquote></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-01-13</span>
+                <span>更新于 2021-03-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/index.md" target="_blank">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" data-title="解决GitHub clone repo太慢的问题" data-hashtags="GitHub"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" data-hashtag="GitHub"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" data-title="解决GitHub clone repo太慢的问题"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" data-title="解决GitHub clone repo太慢的问题"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.wormlight.cn/%E8%A7%A3%E5%86%B3github-clone-repo%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" data-title="解决GitHub clone repo太慢的问题" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算" data-hashtags="java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/github/">Github</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/hugo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="prev" rel="prev" title="Hugo博客配置教程"><i class="fas fa-angle-left fa-fw"></i>Hugo博客配置教程</a>
-            <a href="/typora-picgo-core-github%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%88%B0github/" class="next" rel="next" title="Typora&#43;PicGo Core&#43;Github实现图片上传到Github">Typora&#43;PicGo Core&#43;Github实现图片上传到Github<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/java%E7%AC%94%E8%AE%B0_%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="prev" rel="prev" title="Java笔记_程序基本结构"><i class="fas fa-angle-left fa-fw"></i>Java笔记_程序基本结构</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
