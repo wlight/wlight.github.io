@@ -5,37 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Java笔记_整数运算 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="Java笔记_整数运算" />
+        <title>Java笔记_数组操作 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="Java笔记_数组操作" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" />
+<meta property="og:url" content="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" />
 <meta property="og:image" content="https://blog.wormlight.cn/logo.png"/>
-<meta property="article:published_time" content="2021-03-10T16:30:04+08:00" />
-<meta property="article:modified_time" content="2021-03-10T16:30:04+08:00" />
+<meta property="article:published_time" content="2021-03-11T14:45:35+08:00" />
+<meta property="article:modified_time" content="2021-03-11T14:45:35+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.wormlight.cn/logo.png"/>
 
-<meta name="twitter:title" content="Java笔记_整数运算"/>
+<meta name="twitter:title" content="Java笔记_数组操作"/>
 <meta name="twitter:description" content=""/>
 <meta name="application-name" content="携壶酌流霞">
 <meta name="apple-mobile-web-app-title" content="携壶酌流霞"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" /><link rel="prev" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" /><link rel="next" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" /><link rel="prev" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" /><link rel="next" href="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Java笔记_整数运算",
+        "headline": "Java笔记_数组操作",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.wormlight.cn\/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97\/"
+            "@id": "https:\/\/blog.wormlight.cn\/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "https:\/\/blog.wormlight.cn\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "java","wordcount":  667 ,
-        "url": "https:\/\/blog.wormlight.cn\/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97\/","datePublished": "2021-03-10T16:30:04+08:00","dateModified": "2021-03-10T16:30:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "java","wordcount":  493 ,
+        "url": "https:\/\/blog.wormlight.cn\/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C\/","datePublished": "2021-03-11T14:45:35+08:00","dateModified": "2021-03-11T14:45:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -57,7 +57,7 @@
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
-                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" selected>简体中文</option></select>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" selected>简体中文</option></select>
                     </a><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
@@ -104,7 +104,7 @@
                 </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header>
@@ -118,10 +118,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Java笔记_整数运算</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java笔记_数组操作</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wormside</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-10">2021-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 667 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" class="leancloud_visitors" data-flag-title="Java笔记_整数运算">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-11">2021-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 493 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" class="leancloud_visitors" data-flag-title="Java笔记_数组操作">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -131,54 +131,54 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#整数运算">整数运算</a>
+    <li>
       <ul>
-        <li>
+        <li><a href="#遍历">遍历</a>
           <ul>
-            <li><a href="#基本运算">基本运算</a></li>
-            <li><a href="#溢出">溢出</a></li>
-            <li><a href="#自增自减">自增/自减</a></li>
-            <li><a href="#移位运算">移位运算</a></li>
-            <li><a href="#位运算">位运算</a></li>
-            <li><a href="#运算优先级">运算优先级</a></li>
-            <li><a href="#类型自动提升与强制转型">类型自动提升与强制转型</a></li>
+            <li><a href="#打印数组内容">打印数组内容</a></li>
           </ul>
         </li>
+        <li><a href="#数组排序">数组排序</a>
+          <ul>
+            <li><a href="#冒泡排序">冒泡排序</a></li>
+          </ul>
+        </li>
+        <li><a href="#多维数组">多维数组</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="整数运算">整数运算</h2>
-<h4 id="基本运算">基本运算</h4>
-<p>遵循四则运算法则</p>
-<p>整数的数值表示时精确的，整数运算也永远是精确的，即使是除法也是精确的（两数相除只取整数部分）</p>
-<p>相除</p>
+            </div><div class="content" id="content"><h3 id="遍历">遍历</h3>
+<p>for循环遍历，可以得到数组的索引</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">12345</span><span class="o">/</span><span class="n">67</span><span class="o">;</span> <span class="c1">// 184
-</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ns</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div><p>求余</p>
+</div><p>for each 循环遍历，直接拿到数组元素的值，无法拿到索引</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">12345</span> <span class="o">%</span> <span class="n">67</span><span class="o">;</span> <span class="c1">// 余数17
-</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">:</span> <span class="n">ns</span><span class="o">)</span> <span class="o">{</span>
+    
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>整数的除法对于除数为0时运行时将报错，但编译不会报错</p>
-</blockquote>
-<h4 id="溢出">溢出</h4>
-<p>整数由于存在范围限制，如果计算结果超出了范围，就会产生溢出，而溢出不会报错，却会得到一个奇怪的结果</p>
-<p>解决溢出问题，把int换成long类型</p>
-<h4 id="自增自减">自增/自减</h4>
-<p>++ &ndash;</p>
-<h4 id="移位运算">移位运算</h4>
+</div><h4 id="打印数组内容">打印数组内容</h4>
+<p>直接打印数组变量，得到是数组在JVM中的引用地址</p>
+<p>所以使用for each打印</p>
+<p>或者使用Java标准库<code>Arrays.toString()</code>，快速打印数组的内容；</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -186,62 +186,86 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">7</span><span class="o">;</span>	<span class="c1">// 000000000 000000000 000000000 00000111 = 7
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">;</span> <span class="c1">// 左移一位，00000000 000000000 00000000 00001110 = 14
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">2</span><span class="o">;</span> <span class="c1">// 左移两位，00000000 000000000 00000000 00011100 = 28
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">28</span><span class="o">;</span> <span class="c1">// 左移28位，01110000 000000000 00000000 0000000 = 1879048192
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&lt;&lt;</span> <span class="n">29</span><span class="o">;</span> <span class="c1">// 左移29位，11100000 00000000 00000000 00000000 = -536870912，最高位为1，因此结果变成了负数
-</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ns</span><span class="o">));</span> <span class="c1">// [1, 1, 2, 3, 5, 8]
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div><p>无符号位右移运算<code>&gt;&gt;&gt;</code></p>
-<p>byte 和<code>short</code>类型进行移位时，会首先转换为int再进行</p>
-<blockquote>
-<p>其实，左移就是不断的x2，右移就是不断的/2</p>
-</blockquote>
-<h4 id="位运算">位运算</h4>
-<p>位运算就是按位进行与（&amp;）、或（|）、非（^）和异或的运算</p>
-<h4 id="运算优先级">运算优先级</h4>
-<ul>
-<li><code>()</code></li>
-<li><code>!</code> <code>~</code> <code>++</code> <code>--</code></li>
-<li><code>*</code> <code>/</code> <code>%</code></li>
-<li><code>+</code> <code>-</code></li>
-<li><code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code></li>
-<li><code>&amp;</code></li>
-<li><code>|</code></li>
-<li><code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code></li>
-</ul>
-<h4 id="类型自动提升与强制转型">类型自动提升与强制转型</h4>
-<p>在运算过程中，如果参与运算的两个数类型不一致，那么计算结果为较大类型的整型。例如，<code>short</code>和<code>int</code>计算，结果总是<code>int</code>，原因是<code>short</code>首先自动被转型为<code>int</code></p>
-<p>强制转型使用<code>(类型)</code>，例如，将<code>int</code>强制转型为<code>short</code>:</p>
+</div><h3 id="数组排序">数组排序</h3>
+<h4 id="冒泡排序">冒泡排序</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">12345</span><span class="o">;</span>
-<span class="kt">short</span> <span class="n">s</span> <span class="o">=</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="n">i</span><span class="o">;</span> <span class="c1">// 12345
-</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="o">{</span><span class="n">28</span><span class="o">,</span> <span class="n">12</span><span class="o">,</span> <span class="n">89</span><span class="o">,</span> <span class="n">73</span><span class="o">,</span> <span class="n">65</span><span class="o">,</span> <span class="n">18</span><span class="o">,</span> <span class="n">96</span><span class="o">,</span> <span class="n">50</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">36</span><span class="o">};</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;排序前：&#34;</span> <span class="o">+</span>  <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ns</span><span class="o">));</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ns</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span> <span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">--)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">ns</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">ns</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">ns</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                    <span class="n">ns</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">ns</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">];</span>
+                    <span class="n">ns</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;排序后：&#34;</span><span class="o">+</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ns</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>要注意，超出范围的强制转型会得到错误的结果，原因是转型时，<code>int</code>的两个高位字节直接被扔掉，仅保留了低位的两个字节，强制转型的结果很可能是错的</p>
-</blockquote></div><div class="post-footer" id="post-footer">
+</div><p><strong>Java 标准库内置排序功能，<code>Arrays.sort()</code></strong></p>
+<h3 id="多维数组">多维数组</h3>
+<p>二维数组就是数组的数组，三维数组就是二维数组的数组；</p>
+<p>多维数组的每个元素长度都可以不同；</p>
+<p>打印多维数组可以使用<code>Arrays.deepToString()</code>；</p>
+<p>最常见的多维数组是二维数组，访问二维数组的一个元素使用<code>array[row][col]</code></p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-03-10</span>
+                <span>更新于 2021-03-11</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/index.md" target="_blank">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算" data-hashtags="java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/" data-title="Java笔记_整数运算" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" data-title="Java笔记_数组操作" data-hashtags="java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" data-title="Java笔记_数组操作"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" data-title="Java笔记_数组操作"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/" data-title="Java笔记_数组操作" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -253,8 +277,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/java%E7%AC%94%E8%AE%B0_%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" class="prev" rel="prev" title="Java笔记_程序基本结构"><i class="fas fa-angle-left fa-fw"></i>Java笔记_程序基本结构</a>
-            <a href="/java%E7%AC%94%E8%AE%B0_%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/" class="next" rel="next" title="Java笔记_浮点数运算">Java笔记_浮点数运算<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/java%E7%AC%94%E8%AE%B0_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="prev" rel="prev" title="Java笔记_流程控制"><i class="fas fa-angle-left fa-fw"></i>Java笔记_流程控制</a>
+            <a href="/java%E7%AC%94%E8%AE%B0_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" class="next" rel="next" title="Java笔记_面向对象基础">Java笔记_面向对象基础<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
