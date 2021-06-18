@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>RestTemplate使用小结 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="RestTemplate使用小结" />
+<meta property="og:description" content="Spring之RestTemplate使用小结 I. RestTempalate 基本使用 0. 目标 在介绍如何使用RestTemplate之前，我们先抛出一些小目标，至少需要知" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" />
+<meta property="og:image" content="https://blog.wormlight.cn/logo.png"/>
+<meta property="article:published_time" content="2021-06-18T14:11:53+08:00" />
+<meta property="article:modified_time" content="2021-06-18T14:11:53+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.wormlight.cn/logo.png"/>
+
+<meta name="twitter:title" content="RestTemplate使用小结"/>
+<meta name="twitter:description" content="Spring之RestTemplate使用小结 I. RestTempalate 基本使用 0. 目标 在介绍如何使用RestTemplate之前，我们先抛出一些小目标，至少需要知"/>
+<meta name="application-name" content="携壶酌流霞">
+<meta name="apple-mobile-web-app-title" content="携壶酌流霞"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" /><link rel="prev" href="https://blog.wormlight.cn/git%E5%90%84%E6%8C%87%E4%BB%A4%E7%9A%84%E6%9C%AC%E8%B4%A8%E7%9C%9F%E6%98%AF%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E5%95%8A/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "RestTemplate使用小结",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.wormlight.cn\/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/blog.wormlight.cn\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "java, springboot","wordcount":  3936 ,
+        "url": "https:\/\/blog.wormlight.cn\/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93\/","datePublished": "2021-06-18T14:11:53+08:00","dateModified": "2021-06-18T14:11:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/blog.wormlight.cn\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "wormside"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="携壶酌流霞">携壶酌流霞</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="/about/" title="About"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="携壶酌流霞">携壶酌流霞</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="/about/" title="About">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">RestTemplate使用小结</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wormside</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-18">2021-06-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3936 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" class="leancloud_visitors" data-flag-title="RestTemplate使用小结">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#i-resttempalate-基本使用">I. RestTempalate 基本使用</a>
+      <ul>
+        <li><a href="#0-目标">0. 目标</a></li>
+        <li><a href="#1-基本接口">1. 基本接口</a></li>
+        <li><a href="#2-get请求">2. Get请求</a>
+          <ul>
+            <li><a href="#a-创建get接口">a. 创建Get接口</a></li>
+            <li><a href="#b-getforobject方式">b. getForObject方式</a></li>
+            <li><a href="#c-getforentity方式">c. getForEntity方式</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-post请求">3. Post请求</a>
+          <ul>
+            <li><a href="#a-post接口mock">a. post接口mock</a></li>
+            <li><a href="#b-postforobject方法">b. postForObject方法</a></li>
+            <li><a href="#c-postforentity">c. postForEntity</a></li>
+            <li><a href="#d-postforlocation">d. postForLocation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#ii-小结">II. 小结</a>
+      <ul>
+        <li><a href="#1-get请求">1. Get请求</a></li>
+        <li><a href="#2-post请求">2. Post请求</a></li>
+        <li><a href="#3-其他">3. 其他</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="spring之resttemplate使用小结">Spring之RestTemplate使用小结</h1>
+<h2 id="i-resttempalate-基本使用">I. RestTempalate 基本使用</h2>
+<h3 id="0-目标">0. 目标</h3>
+<p>在介绍如何使用RestTemplate之前，我们先抛出一些小目标，至少需要知道通过RestTemplate可以做些什么，以及我们要用它来干些什么</p>
+<p>简单的给出了一下常见的问题如下</p>
+<ul>
+<li>普通的Get请求获取返回数据，怎么玩？</li>
+<li>post提交表达的请求，如何处理</li>
+<li>post请求中RequestBody的请求方式与普通的请求方式区别</li>
+<li>https/http两种访问如何分别处理</li>
+<li>如何在请求中带上指定的Header</li>
+<li>有跨域的问题么？如果有怎么解决</li>
+<li>有登录验证的请求，该怎么办，怎样携带身份信息</li>
+<li>上传文件可以支持么</li>
+<li>对于需要代理才能访问的http资源，加代理的姿势是怎样的</li>
+</ul>
+<p>上面的问题比较多，目测不是一篇博文可以弄完的，因此对这个拆解一下，本篇主要关注在RestTemplate的简单Get/Post请求的使用方式上</p>
+<h3 id="1-基本接口">1. 基本接口</h3>
+<p>捞出源码，看一下其给出的一些常用接口，基本上可以分为下面几种</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// get 请求
+</span><span class="c1"></span><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">getForObject</span><span class="o">();</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">getForEntity</span><span class="o">();</span>
+
+<span class="c1">// head 请求
+</span><span class="c1"></span><span class="kd">public</span> <span class="n">HttpHeaders</span> <span class="nf">headForHeaders</span><span class="o">();</span>
+
+<span class="c1">// post 请求
+</span><span class="c1"></span><span class="kd">public</span> <span class="n">URI</span> <span class="nf">postForLocation</span><span class="o">();</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">postForObject</span><span class="o">();</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">postForEntity</span><span class="o">();</span>
+
+<span class="c1">// put 请求
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">put</span><span class="o">();</span>
+
+<span class="c1">// pathch 
+</span><span class="c1"></span><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="n">patchForObject</span>
+
+<span class="c1">// delete
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">()</span>
+
+<span class="c1">// options
+</span><span class="c1"></span><span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">HttpMethod</span><span class="o">&gt;</span> <span class="n">optionsForAllow</span>
+
+<span class="c1">// exchange
+</span><span class="c1"></span><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">exchange</span><span class="o">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面提供的几个接口，基本上就是Http提供的几种访问方式的对应，其中exchange却又不一样，后面细说</p>
+<h3 id="2-get请求">2. Get请求</h3>
+<p>从上面的接口命名上，可以看出可以使用的有两种方式 <code>getForObject</code> 和 <code>getForEntity</code>，那么这两种有什么区别？</p>
+<ul>
+<li>从接口的签名上，可以看出一个是直接返回预期的对象，一个则是将对象包装到 <code>ResponseEntity</code> 封装类中</li>
+<li>如果只关心返回结果，那么直接用 <code>GetForObject</code> 即可</li>
+<li>如果除了返回的实体内容之外，还需要获取返回的header等信息，则可以使用 <code>getForEntit</code></li>
+</ul>
+<h4 id="a-创建get接口">a. 创建Get接口</h4>
+<p>为了验证RestTemplate的使用姿势，当然得先提供一个后端的REST服务，这了直接用了我个人的一个古诗词的后端接口，来作为简单的Get测试使用</p>
+<p>请求连接： <code>https://story.hhui.top/detail?id=666106231640</code></p>
+<p>返回结果:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="nt">&#34;msg&#34;</span><span class="p">:</span> <span class="s2">&#34;SUCCESS&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;result&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="mi">666106231640</span><span class="p">,</span>
+        <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;西塞山二首（今谓之道士矶，即兴国军大冶县&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;王周&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="s2">&#34;西塞名山立翠屏，浓岚横入半江青。\n千寻铁锁无由问，石壁空存道者形。\n匹妇顽然莫问因，匹夫何去望千春。\n翻思岵屺传诗什，举世曾无化石人。&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;explain&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;theme&#34;</span><span class="p">:</span> <span class="s2">&#34;无&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;dynasty&#34;</span><span class="p">:</span> <span class="s2">&#34;唐诗&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="b-getforobject方式">b. getForObject方式</h4>
+<p>首先看下完整的接口签名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Nullable</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">getForObject</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">uriVariables</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+<span class="nd">@Nullable</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">getForObject</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">uriVariables</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+<span class="nd">@Nullable</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">getForObject</span><span class="o">(</span><span class="n">URI</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>有三个重载的方法，从接口上也比较容易看出如何使用，其中有点疑惑的则是第一钟，参数应该怎么传了，下面给出上面几种的使用姿势</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RestTestmplateTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">RestTemplate</span> <span class="n">restTemplate</span><span class="o">;</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">restTemplate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RestTemplate</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@lombok.Data</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">InnerRes</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="n">Status</span> <span class="n">status</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="n">Data</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@lombok.Data</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Status</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">code</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@lombok.Data</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Data</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">id</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">theme</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">dynasty</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">explain</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">content</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testGet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 使用方法一，不带参数
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;https://story.hhui.top/detail?id=666106231640&#34;</span><span class="o">;</span>
+        <span class="n">InnerRes</span> <span class="n">res</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">InnerRes</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+
+
+        <span class="c1">// 使用方法一，传参替换
+</span><span class="c1"></span>        <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;https://story.hhui.top/detail?id={?}&#34;</span><span class="o">;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">InnerRes</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&#34;666106231640&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+
+        <span class="c1">// 使用方法二，map传参
+</span><span class="c1"></span>        <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;https://story.hhui.top/detail?id={id}&#34;</span><span class="o">;</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="n">666106231640L</span><span class="o">);</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">InnerRes</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">params</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+
+        <span class="c1">// 使用方法三，URI访问
+</span><span class="c1"></span>        <span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&#34;https://story.hhui.top/detail?id=666106231640&#34;</span><span class="o">);</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">uri</span><span class="o">,</span> <span class="n">InnerRes</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看上面的testcase，后面两个方法的使用没什么好说的，主要看一下<code>org.springframework.web.client.RestTemplate#getForObject(java.lang.String, java.lang.Class&lt;T&gt;, java.lang.Object...)</code> 的使用姿势</p>
+<ul>
+<li>根据实际传参替换url模板中的内容</li>
+<li>使用方法一时，模板中使用 <code>{?}</code> 来代表坑位，根据实际的传参顺序来填充</li>
+<li>使用方法二时，模板中使用 <code>{xx}</code>, 而这个xx，对应的就是map中的key</li>
+</ul>
+<p>上面执行后的截图如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d152ec7"
+        data-srcset="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d152ec7, https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d152ec7 1.5x, https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d152ec7 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d152ec7"
+        title="3AD423F4F3C673F2D366772612B4355A.jpg" /></p>
+<h4 id="c-getforentity方式">c. getForEntity方式</h4>
+<p>既然getForObject有三种使用方法，那么getForEntity理论上也应该有对应的三种方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">getForEntity</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">uriVariables</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">getForEntity</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">uriVariables</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">getForEntity</span><span class="o">(</span><span class="n">URI</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>因为使用姿势和上面一致，因此只拿一个进行测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testGetForEntity</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;https://story.hhui.top/detail?id=666106231640&#34;</span><span class="o">;</span>
+    <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">InnerRes</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">InnerRes</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对这个，我们主要关注的就是ResponseEntity封装中，多了哪些东西，截图如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d06c3ac"
+        data-srcset="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d06c3ac, https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d06c3ac 1.5x, https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d06c3ac 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d06c3ac"
+        title="C2D317A154B33CF76F6DB438D1589754.jpg" /></p>
+<p>从上面可以看出，多了两个东西</p>
+<ul>
+<li>一个返回的http状态码，如200表示请求成功，500服务器错误，404not found等</li>
+<li>一个 ResponseHeader</li>
+</ul>
+<h3 id="3-post请求">3. Post请求</h3>
+<p>从上面的接口说明上看，post请求除了有forObject 和 forEntity之外，还多了个forLocation；其次post与get一个明显的区别就是传参的姿势问题，get的参数一般会待在url上；post的则更常见的是通过表单的方式提交</p>
+<p>因此接下来关注的重点在于forLocation是什么，以及如何传参</p>
+<h4 id="a-post接口mock">a. post接口mock</h4>
+<p>首先创建一个简单的提供POST请求的REST服务，基于Spring-boot简单搭建一个，如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ResponseBody</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;post&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="o">{</span><span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">OPTIONS</span><span class="o">,</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">})</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">post</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;email&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">email</span><span class="o">,</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;nick&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">nick</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+   <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;code&#34;</span><span class="o">,</span> <span class="s">&#34;200&#34;</span><span class="o">);</span>
+   <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;result&#34;</span><span class="o">,</span> <span class="s">&#34;add &#34;</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="s">&#34; # &#34;</span> <span class="o">+</span> <span class="n">nick</span> <span class="o">+</span> <span class="s">&#34; success!&#34;</span><span class="o">);</span>
+   <span class="k">return</span> <span class="n">JSON</span><span class="o">.</span><span class="na">toJSONString</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="b-postforobject方法">b. postForObject方法</h4>
+<p>首先看一下接口签名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">postForObject</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">request</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">uriVariables</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">postForObject</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">request</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">uriVariables</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">postForObject</span><span class="o">(</span><span class="n">URI</span> <span class="n">url</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">request</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">responseType</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>上面的三个方法，看起来和前面并没有太大的区别，只是多了一个request参数，那么具体的使用如何呢？</p>
+<p>下面分别给出使用用例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testPost</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://localhost:8080/post&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">email</span> <span class="o">=</span> <span class="s">&#34;test@hhui.top&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">nick</span> <span class="o">=</span> <span class="s">&#34;一灰灰Blog&#34;</span><span class="o">;</span>
+
+    <span class="n">MultiValueMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedMultiValueMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;email&#34;</span><span class="o">,</span> <span class="n">email</span><span class="o">);</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;nick&#34;</span><span class="o">,</span> <span class="n">nick</span><span class="o">);</span>
+
+    <span class="c1">// 使用方法三
+</span><span class="c1"></span>    <span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForObject</span><span class="o">(</span><span class="n">uri</span><span class="o">,</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+
+    <span class="c1">// 使用方法一
+</span><span class="c1"></span>    <span class="n">ans</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForObject</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+
+    <span class="c1">// 使用方法一，但是结合表单参数和uri参数的方式，其中uri参数的填充和get请求一致
+</span><span class="c1"></span>    <span class="n">request</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;email&#34;</span><span class="o">,</span> <span class="n">email</span><span class="o">);</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForObject</span><span class="o">(</span><span class="n">url</span> <span class="o">+</span> <span class="s">&#34;?nick={?}&#34;</span><span class="o">,</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">nick</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+
+
+    <span class="c1">// 使用方法二
+</span><span class="c1"></span>    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;nick&#34;</span><span class="o">,</span> <span class="n">nick</span><span class="o">);</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForObject</span><span class="o">(</span><span class="n">url</span> <span class="o">+</span> <span class="s">&#34;?nick={nick}&#34;</span><span class="o">,</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">params</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>上面分别给出了三种方法的调用方式，其中post传参区分为两种，一个是uri参数即拼接在url中的，还有一个就是表单参数</p>
+<ul>
+<li>uri参数，使用姿势和get请求中一样，填充uri中模板坑位</li>
+<li>表单参数，由<code>MultiValueMap</code>封装，同样是kv结构</li>
+</ul>
+<h4 id="c-postforentity">c. postForEntity</h4>
+<p>和前面的使用姿势一样，无非是多了一层包装而已，略过不讲</p>
+<h4 id="d-postforlocation">d. postForLocation</h4>
+<p>这个与前面有点区别，从接口定义上来说，主要是</p>
+<blockquote>
+<p>POST 数据到一个URL，返回新创建资源的URL</p>
+</blockquote>
+<p>同样提供了三个接口，分别如下，需要注意的是返回结果，为URI对象,即网络资源</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">URI</span> <span class="nf">postForLocation</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">request</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">uriVariables</span><span class="o">)</span>
+		<span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+<span class="kd">public</span> <span class="n">URI</span> <span class="nf">postForLocation</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">request</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="o">?&gt;</span> <span class="n">uriVariables</span><span class="o">)</span>
+		<span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+<span class="kd">public</span> <span class="n">URI</span> <span class="nf">postForLocation</span><span class="o">(</span><span class="n">URI</span> <span class="n">url</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">request</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RestClientException</span> <span class="o">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>那么什么样的接口适合用这种访问姿势呢？</p>
+<p>想一下我们一般登录or注册都是post请求，而这些操作完成之后呢？大部分都是跳转到别的页面去了，这种场景下，就可以使用 <code>postForLocation</code> 了，提交数据，并获取返回的URI，一个测试如下</p>
+<p>首先mock一个后端接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ResponseBody</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;success&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">loginSuccess</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">,</span> <span class="n">String</span> <span class="n">nick</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&#34;welcome &#34;</span> <span class="o">+</span> <span class="n">nick</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;post&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="o">{</span><span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">OPTIONS</span><span class="o">,</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">})</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">post</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;email&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">email</span><span class="o">,</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;nick&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">nick</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&#34;redirect:/success?email=&#34;</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="s">&#34;&amp;nick=&#34;</span> <span class="o">+</span> <span class="n">nick</span> <span class="o">+</span> <span class="s">&#34;&amp;status=success&#34;</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>访问的测试用例，基本上和前面的一样，没有什么特别值得一说的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testPostLocation</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://localhost:8080/post&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">email</span> <span class="o">=</span> <span class="s">&#34;test@hhui.top&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">nick</span> <span class="o">=</span> <span class="s">&#34;一灰灰Blog&#34;</span><span class="o">;</span>
+
+    <span class="n">MultiValueMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedMultiValueMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;email&#34;</span><span class="o">,</span> <span class="n">email</span><span class="o">);</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;nick&#34;</span><span class="o">,</span> <span class="n">nick</span><span class="o">);</span>
+
+    <span class="c1">// 使用方法三
+</span><span class="c1"></span>    <span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForLocation</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">request</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">uri</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d2331ec"
+        data-srcset="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d2331ec, https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d2331ec 1.5x, https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d2331ec 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1653356c4d2331ec"
+        title="C4272685267804B4A1C1837EAEB76762.jpg" /></p>
+<p>获取到的就是302跳转后端url，细心的朋友可能看到上面中文乱码的问题，如何解决呢？</p>
+<p>一个简单的解决方案就是url编码一下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;post&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="o">{</span><span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">OPTIONS</span><span class="o">,</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">},</span>
+            <span class="n">produces</span> <span class="o">=</span> <span class="s">&#34;charset/utf8&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">post</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;email&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">email</span><span class="o">,</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;nick&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">nick</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&#34;redirect:/success?email=&#34;</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="s">&#34;&amp;nick=&#34;</span> <span class="o">+</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">nick</span><span class="o">,</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">)</span> <span class="o">+</span> <span class="s">&#34;&amp;status=success&#34;</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ii-小结">II. 小结</h2>
+<p>上面目前只给出了Get/Post两种请求方式的基本使用方式，并没有涉及到更高级的如添加请求头，添加证书，设置代理等，高级的使用篇等待下一篇出炉，下面小结一下上面的使用姿势</p>
+<h3 id="1-get请求">1. Get请求</h3>
+<p>get请求中，参数一般都是带在url上，对于参数的填充，有两种方式，思路一致都是根据实际的参数来填充url中的占位符的内容；根据返回结果，也有两种方式，一个是只关心返回对象，另一个则包含了返回headers信心</p>
+<p><strong>参数填充</strong></p>
+<ol>
+<li>形如  <code>http://story.hhui.top?id={0}</code> 的 url</li>
+</ol>
+<ul>
+<li>调用 <code>getForObject(String url, Class&lt;T&gt; responseType, Object... uriVariables)</code></li>
+<li>模板中的0，表示 uriVariables 数组中的第0个， i，则表示第i个</li>
+<li>如果没有url参数，也推荐用这个方法，不传uriVariables即可</li>
+</ul>
+<ol>
+<li>形如  <code>http://story.hhui.top?id={id}</code> 的 url</li>
+</ol>
+<ul>
+<li>调用 <code>getForObject(String url, Class&lt;T&gt; responseType, Map&lt;String, ?&gt; uriVariables)</code></li>
+<li>map参数中的key，就是url参数中 {} 中的内容</li>
+</ul>
+<p>其实还有一种传参方式，就是path参数，填充方式和上面一样，并没有什么特殊的玩法，上面没有特别列出</p>
+<p><strong>返回结果</strong></p>
+<ol>
+<li>直接获取返回的数据  <code>getForObject</code></li>
+<li>获取待responseHeader的数据 <code>getForEntity</code></li>
+</ol>
+<h3 id="2-post请求">2. Post请求</h3>
+<ul>
+<li>post请求的返回也有两种，和上面一样</li>
+<li>post请求，参数可以区分为表单提交和url参数，其中url参数和前面的逻辑一致</li>
+<li>post表单参数，请包装在 <code>MultiValueMap</code> 中，作为第二个参数 <code>Request</code> 来提交</li>
+<li>post的方法，还有一个 <code>postForLocation</code>，返回的是一个URI对象，即适用于返回网络资源的请求方式</li>
+</ul>
+<h3 id="3-其他">3. 其他</h3>
+<p>最前面提了多点关于网络请求的常见case，但是上面的介绍，明显只处于基础篇，我们还需要关注的有</p>
+<ul>
+<li>如何设置请求头？</li>
+<li>有身份验证的请求，如何携带身份信息？</li>
+<li>代理的设置</li>
+<li>文件上传可以怎么做？</li>
+<li>post提交json串（即RequestBody) 又可以怎么处理</li>
+</ul>
+<p>上面可能还停留在应用篇，对于源码和实现有兴趣的话，问题也就来了</p>
+<ul>
+<li>RestTemplaet的实现原理是怎样的</li>
+<li>前面url参数的填充逻辑实现是否优雅</li>
+<li>返回的对象如何解析</li>
+<li>&hellip;.</li>
+</ul>
+<p>小小的一个工具类，其实东西还挺多的，接下来的小目标，就是针对上面提出的点，逐一进行研究</p>
+<p>作者：一灰灰
+链接：https://juejin.cn/post/6844903656165212174
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-06-18</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" data-title="RestTemplate使用小结" data-hashtags="java,springboot"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" data-title="RestTemplate使用小结"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" data-title="RestTemplate使用小结"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" data-title="RestTemplate使用小结" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a>,&nbsp;<a href="/tags/springboot/">springboot</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/git%E5%90%84%E6%8C%87%E4%BB%A4%E7%9A%84%E6%9C%AC%E8%B4%A8%E7%9C%9F%E6%98%AF%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E5%95%8A/" class="prev" rel="prev" title="Git各指令的本质真是通俗易懂啊"><i class="fas fa-angle-left fa-fw"></i>Git各指令的本质真是通俗易懂啊</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.74.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wormside</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

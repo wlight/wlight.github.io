@@ -3,9 +3,16 @@
         <title>携壶酌流霞</title>
         <link>https://blog.wormlight.cn/</link>
         <description>书山有路勤为径，学海无涯苦作舟</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 May 2021 15:02:18 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 18 Jun 2021 14:11:53 &#43;0800</lastBuildDate>
             <atom:link href="https://blog.wormlight.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>RestTemplate使用小结</title>
+    <link>https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
+    <pubDate>Fri, 18 Jun 2021 14:11:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
+    <description><![CDATA[Spring之RestTemplate使用小结 I. RestTempalate 基本使用 0. 目标 在介绍如何使用RestTemplate之前，我们先抛出一些小目标，至少需要知]]></description>
+</item><item>
     <title>Git各指令的本质真是通俗易懂啊</title>
     <link>https://blog.wormlight.cn/git%E5%90%84%E6%8C%87%E4%BB%A4%E7%9A%84%E6%9C%AC%E8%B4%A8%E7%9C%9F%E6%98%AF%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E5%95%8A/</link>
     <pubDate>Mon, 17 May 2021 15:02:18 &#43;0800</pubDate>
@@ -18,7 +25,7 @@
     <pubDate>Wed, 12 May 2021 10:01:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.wormlight.cn/go-zore%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</guid>
-    <description><![CDATA[开发环境 golang 1.16 mysql 5.7 redis etcd (多服务时使用，服务发现) go-zore 框架 官方文档 项目开发 创建数据库和数据表 框架初始化 目录拆分 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 csp //]]></description>
+    <description><![CDATA[开发环境 golang 1.16 mysql 5.7 redis etcd (多服务时使用，服务发现) go-zore 框架 官方文档 项目开发 创建数据库和数据表 框架初始化 目录拆分 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18]]></description>
 </item><item>
     <title>Go Zore简明教程</title>
     <link>https://blog.wormlight.cn/go-zore%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</link>
@@ -67,13 +74,6 @@
     <pubDate>Wed, 10 Mar 2021 16:37:03 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Java笔记_整数运算</title>
-    <link>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/</link>
-    <pubDate>Wed, 10 Mar 2021 16:30:04 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

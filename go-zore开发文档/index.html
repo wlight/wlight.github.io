@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Go Zore开发文档 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="Go Zore开发文档" />
-<meta property="og:description" content="开发环境 golang 1.16 mysql 5.7 redis etcd (多服务时使用，服务发现) go-zore 框架 官方文档 项目开发 创建数据库和数据表 框架初始化 目录拆分 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 csp //" />
+<meta property="og:description" content="开发环境 golang 1.16 mysql 5.7 redis etcd (多服务时使用，服务发现) go-zore 框架 官方文档 项目开发 创建数据库和数据表 框架初始化 目录拆分 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.wormlight.cn/go-zore%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" />
 <meta property="og:image" content="https://blog.wormlight.cn/logo.png"/>
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://blog.wormlight.cn/logo.png"/>
 
 <meta name="twitter:title" content="Go Zore开发文档"/>
-<meta name="twitter:description" content="开发环境 golang 1.16 mysql 5.7 redis etcd (多服务时使用，服务发现) go-zore 框架 官方文档 项目开发 创建数据库和数据表 框架初始化 目录拆分 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 csp //"/>
+<meta name="twitter:description" content="开发环境 golang 1.16 mysql 5.7 redis etcd (多服务时使用，服务发现) go-zore 框架 官方文档 项目开发 创建数据库和数据表 框架初始化 目录拆分 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18"/>
 <meta name="application-name" content="携壶酌流霞">
 <meta name="apple-mobile-web-app-title" content="携壶酌流霞"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -34,7 +34,7 @@
                             "url": "https:\/\/blog.wormlight.cn\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "go","wordcount":  1740 ,
+                        }],"genre": "posts","keywords": "go","wordcount":  3255 ,
         "url": "https:\/\/blog.wormlight.cn\/go-zore%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3\/","datePublished": "2021-05-12T10:01:23+08:00","dateModified": "2021-05-12T10:01:23+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -120,8 +120,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Go Zore开发文档</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wormside</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/go/"><i class="far fa-folder fa-fw"></i>go</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1740 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/go-zore%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" class="leancloud_visitors" data-flag-title="Go Zore开发文档">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3255 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/go-zore%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" class="leancloud_visitors" data-flag-title="Go Zore开发文档">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -138,31 +138,49 @@
           <ul>
             <li><a href="#创建数据库和数据表">创建数据库和数据表</a></li>
             <li><a href="#框架初始化">框架初始化</a></li>
-            <li><a href="#model-生成">model 生成</a></li>
+            <li><a href="#model-生成">model 生成</a>
+              <ul>
+                <li><a href="#修改-goctl-生成模板"><strong>修改 goctl 生成模板</strong></a></li>
+                <li><a href="#1ddl-生成">1、ddl 生成</a></li>
+                <li><a href="#2datacource-生成">2、<strong>datacource 生成</strong></a></li>
+                <li><a href="#注意事项"><strong>注意事项</strong></a></li>
+              </ul>
+            </li>
             <li><a href="#api-文件编写">api 文件编写</a></li>
             <li><a href="#api-文件生成-api-服务">api 文件生成 api 服务</a></li>
           </ul>
         </li>
-        <li><a href="#编写业务代码">编写业务代码</a>
+        <li><a href="#初始化配置">初始化配置</a>
           <ul>
-            <li><a href="#添加-mysql-配置">添加 Mysql 配置</a></li>
+            <li><a href="#添加-mysql-和-redis-配置">添加 Mysql 和 Redis 配置</a></li>
             <li><a href="#完善-yaml-配置">完善 yaml 配置</a></li>
             <li><a href="#完善服务依赖">完善服务依赖</a></li>
-            <li><a href="#填充业务逻辑">填充业务逻辑</a></li>
-          </ul>
-        </li>
-        <li><a href="#错误处理">错误处理</a>
-          <ul>
-            <li>
+            <li><a href="#错误处理">错误处理</a>
               <ul>
-                <li><a href="#自定义错误">自定义错误</a></li>
+                <li><a href="#自定义错误">自定义错误</a>
+                  <ul>
+                    <li><a href="#全局错误处理">全局错误处理</a></li>
+                    <li><a href="#基础错误文件">基础错误文件</a></li>
+                    <li><a href="#开启自定义错误">开启自定义错误</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#日志配置">日志配置</a>
+              <ul>
+                <li><a href="#api-日志配置">api 日志配置</a></li>
               </ul>
             </li>
           </ul>
         </li>
-        <li><a href="#日志配置">日志配置</a>
+        <li><a href="#编写业务逻辑">编写业务逻辑</a></li>
+        <li><a href="#运行项目">运行项目</a></li>
+        <li><a href="#docker-运行">docker 运行</a>
           <ul>
-            <li><a href="#api配置">api配置</a></li>
+            <li><a href="#生成-dockerfile">生成 Dockerfile</a></li>
+            <li><a href="#构建镜像">构建镜像</a></li>
+            <li><a href="#启动服务">启动服务</a></li>
+            <li><a href="#测试服务">测试服务</a></li>
           </ul>
         </li>
       </ul>
@@ -203,47 +221,143 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">csp // 工程名称
+<pre class="chroma"><code class="language-shell" data-lang="shell">csp // 工程名称
 ├── common //通用库
-│   ├── configx
-│   ├── errorx
-│   └── httpx
+│   ├── errorx
+│   │   ├── base_error.go // 基础错误处理
+│   │   └── error_handler.go // 错误处理
+│   └── utils
+│       └── tools.go
+├── go.mod // mod文件
+├── go.sum
 └── service // 服务存放目录
-    └── data
-        ├── cmd // 业务层
-        │   ├── api // HTTP访问服务，业务需求实现
-        │   │   └── data.api
-        │   └── cronjob // 定时任务，定时数据更新业务
-        |	└── rmq // 消息处理系统：mq和dq，处理一些高并发和延时业务
-        └── model // model层，直接操作数据库，服务访问持久化数据层的桥梁
-            └── orderdatas
-                ├── orderdatasmodel.go
-                └── vars.go
+    ├── material 
+    │   ├── api
+    │   ├── model
+    │   └── rpc
+    └── order // 
+        ├── api // // HTTP访问服务，业务需求实现
+        │   ├── cmd
+        │   │   ├── etc  // 配置文件
+        │   │   │   └── order-api.yaml
+        │   │   ├── internal
+        │   │   │   ├── config
+        │   │   │   │   └── config.go  // 配置声明type
+        │   │   │   ├── handler // 路由及handler转发
+        │   │   │   │   ├── routes.go
+        │   │   │   │   └── v1
+        │   │   │   │       ├── create_order_handler.go
+        │   │   │   │       ├── del_orders_handler.go
+        │   │   │   │       ├── get_orders_detail_handler.go
+        │   │   │   │       ├── get_orders_handler.go
+        │   │   │   │       └── update_orders_handler.go
+        │   │   │   ├── logic // 业务逻辑
+        │   │   │   │   └── v1
+        │   │   │   │       ├── create_order_logic.go
+        │   │   │   │       ├── del_orders_logic.go
+        │   │   │   │       ├── get_orders_detail_logic.go
+        │   │   │   │       ├── get_orders_logic.go
+        │   │   │   │       └── update_orders_logic.go
+        │   │   │   ├── middleware // 中间件文件
+        │   │   │   │   └── checkauth_middleware.go
+        │   │   │   ├── svc // logic所依赖的资源池
+        │   │   │   │   └── service_context.go
+        │   │   │   └── types // request、response的struct，根据api自动生成，不建议编辑
+        │   │   │       └── types.go
+        │   │   └── order.go // main函数入口
+        │   └── order.api // api描述文件
+        ├── model  // model层，直接操作数据库，服务访问持久化数据层的桥梁
+        │   ├── order_datas_model.go
+        │   ├── order_details_model.go
+        │   └── vars.go
+        └── rpc // rpc服务，给其他子系统提供基础数据访问
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
 <h4 id="model-生成">model 生成</h4>
+<h5 id="修改-goctl-生成模板"><strong>修改 goctl 生成模板</strong></h5>
 <ul>
 <li>
-<p>ddl 生成</p>
-</li>
-<li>
-<p><code>goctl model mysql ddl -src user.sql -dir . -c</code></p>
-</li>
-<li>
-<p>datacource 生成</p>
-</li>
-<li>
-<p><code>goctl model mysql datasource -url=&quot;$username:$password@tcp($host)&quot; -table=&quot;$tablename&quot; -c -dir .</code></p>
-</li>
-<li>
-<p>注意事项</p>
+<p>goctl 只能默认用户在建表时会创建createTime、updateTime字段(忽略大小写、下划线命名风格)且默认值均为<code>CURRENT_TIMESTAMP</code>，而updateTime支持<code>ON UPDATE CURRENT_TIMESTAMP</code>，对于这两个字段生成<code>insert</code>、<code>update</code>时会被移除，不在赋值范畴内，当然，如果你不需要这两个字段那也无大碍。但是我们数据库表里使用的是<code>created_at</code> 和 <code>updated_at</code>，所以我们要修改<code>goctl</code>的生成模板。</p>
 <ul>
-<li>-c 生成带缓存，目前仅支持 redis 缓存，如果选择带缓存模式，即生成的FindOne(ByXxx)&amp;Delete代码会生成带缓存逻辑的代码，目前仅支持单索引字段（除全文索引外），对于联合索引我们默认认为不需要带缓存，且不属于通用型代码，因此没有放在代码生成行列，如example中user表中的id、name、mobile字段均属于单字段索引。</li>
+<li>查找<code>goctl</code>的源代码的位置 <code>$GOPATH/pkg/mod/github.com/tal-tech/go-zero@$VERSION/tools/goctl</code></li>
+<li>查找 <code>createTime</code>，然后替换成 <code>CreatedAt</code> 和 <code>UpdatedAt</code>，修改以下文件 :
+<ul>
+<li><code>$GOPATH/pkg/mod/github.com/tal-tech/go-zero@v1.1.7/tools/goctl/model/sql/template/vars.go</code></li>
+<li><code>$GOPATH/pkg/mod/github.com/tal-tech/go-zero@v1.1.7/tools/goctl/model/sql/gen/update.go</code></li>
+<li><code>$GOPATH/pkg/mod/github.com/tal-tech/go-zero@v1.1.7/tools/goctl/model/sql/gen/insert.go</code></li>
+<li><code>$GOPATH/pkg/mod/github.com/tal-tech/go-zero@v1.1.7/tools/goctl/model/sql/parser/parser.go</code></li>
 </ul>
+</li>
+<li>重新编译成运行工具：
+<ul>
+<li><code>cd  $GOPATH/pkg/mod/github.com/tal-tech/go-zero@v1.1.7/tools/goctl/</code></li>
+<li><code>go build</code></li>
+<li><code>mv goctl $GOPATH/bin/</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Model 生成方式有以下两种方式：</p>
+<p>切换到model文件夹中：</p>
+<p><code>cd csp/service/order/model</code></p>
+<h5 id="1ddl-生成">1、ddl 生成</h5>
+<ul>
+<li><code>goctl model mysql ddl -src user.sql -dir . -c</code></li>
+</ul>
+<h5 id="2datacource-生成">2、<strong>datacource 生成</strong></h5>
+<ul>
+<li><code>goctl model mysql datasource -url=&quot;$username:$password@tcp($host)&quot; -table=&quot;$tablename&quot; -c -dir . -style go_zero</code></li>
+<li>格式化符有<code>go</code>,<code>zero</code>组成，如常见的三种格式化风格你可以这样编写：
+<ul>
+<li>lower: <code>gozero</code></li>
+<li>camel: <code>goZero</code></li>
+<li>snake: <code>go_zero</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="注意事项"><strong>注意事项</strong></h5>
+<ul>
+<li>
+<p>-c 生成带缓存，目前仅支持 redis 缓存，如果选择带缓存模式，即生成的FindOne(ByXxx)&amp;Delete代码会生成带缓存逻辑的代码，目前仅支持单索引字段（除全文索引外），对于联合索引我们默认认为不需要带缓存，且不属于通用型代码，因此没有放在代码生成行列，如example中user表中的id、name、mobile字段均属于单字段索引。</p>
 </li>
 <li>
 <p>model事务（<strong>TODO：只能在单个model里写事务，感觉很难受啊，暂时没有找到跨model的办法</strong>）</p>
@@ -298,7 +412,9 @@
 </ul>
 <h4 id="api-文件编写">api 文件编写</h4>
 <ul>
-<li>生成 api 文件：<code>goctl api -o data.api</code></li>
+<li>生成 api 文件：</li>
+<li><code>cd csp/service/order/api</code></li>
+<li><code>goctl api -o data.api</code></li>
 <li>编写 api 文件，<a href="https://go-zero.dev/cn/api-grammar.html" target="_blank" rel="noopener noreffer">api语法介绍</a></li>
 </ul>
 <h4 id="api-文件生成-api-服务">api 文件生成 api 服务</h4>
@@ -308,19 +424,21 @@
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> csp/service/data/cmd/api
-goctl api go -api data.api -dir .
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> csp/service/data/api
+// -style 编程代码文件风格，有三种风格，也就是有三种值：gozero<span class="o">(</span>全小写，默认<span class="o">)</span>；goZero/Gozero（驼峰）；go_zero（下划线）
+goctl api go -api data.api -dir . -style go_zero
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
-<h3 id="编写业务代码">编写业务代码</h3>
-<h4 id="添加-mysql-配置">添加 Mysql 配置</h4>
+<h3 id="初始化配置">初始化配置</h3>
+<h4 id="添加-mysql-和-redis-配置">添加 Mysql 和 Redis 配置</h4>
 <ul>
 <li>
-<p><code>vim service/data/cmd/api/internal/config/config.go</code></p>
+<p><code>vim csp/service/order/api/cmd/internal/config/config.go</code></p>
 </li>
 <li>
 <div class="highlight"><div class="chroma">
@@ -362,7 +480,7 @@ goctl api go -api data.api -dir .
 <h4 id="完善-yaml-配置">完善 yaml 配置</h4>
 <ul>
 <li>
-<p><code>vim service/data/cmd/api/etc/data-api.yaml</code></p>
+<p><code>vim csp/service/order/api/cmd/etc/data-api.yaml</code></p>
 </li>
 <li>
 <div class="highlight"><div class="chroma">
@@ -394,7 +512,7 @@ goctl api go -api data.api -dir .
 <h4 id="完善服务依赖">完善服务依赖</h4>
 <ul>
 <li>
-<p><code>vim service/data/cmd/api/internal/svc/servicecontext.go</code></p>
+<p><code>vim csp/service/order/api/cmd/internal/svc/service_context.go</code></p>
 </li>
 <li>
 <div class="highlight"><div class="chroma">
@@ -420,42 +538,53 @@ goctl api go -api data.api -dir .
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">svc</span>
   
 <span class="kn">import</span> <span class="p">(</span>
-  <span class="s">&#34;csp/service/data/cmd/api/internal/config&#34;</span>
-  <span class="s">&#34;csp/service/data/model/orderdatas&#34;</span>
+  <span class="s">&#34;csp/service/order/api/cmd/internal/config&#34;</span>
+  <span class="s">&#34;csp/service/order/api/cmd/internal/middleware&#34;</span>
+  <span class="s">&#34;csp/service/order/model&#34;</span>
   <span class="s">&#34;github.com/tal-tech/go-zero/core/stores/sqlx&#34;</span>
+  <span class="s">&#34;github.com/tal-tech/go-zero/rest&#34;</span>
 <span class="p">)</span>
   
 <span class="kd">type</span> <span class="nx">ServiceContext</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">Config</span> <span class="nx">config</span><span class="p">.</span><span class="nx">Config</span>
-  <span class="nx">OrderDatasModel</span> <span class="nx">orderdatas</span><span class="p">.</span><span class="nx">OrderDatasModel</span>
+  <span class="nx">Config</span>    <span class="nx">config</span><span class="p">.</span><span class="nx">Config</span>
+  <span class="nx">CheckAuth</span> <span class="nx">rest</span><span class="p">.</span><span class="nx">Middleware</span>
+  <span class="nx">OrderDatasModel</span> <span class="nx">model</span><span class="p">.</span><span class="nx">OrderDatasModel</span>
+  <span class="nx">OrderDetailsModel</span> <span class="nx">model</span><span class="p">.</span><span class="nx">OrderDetailsModel</span>
 <span class="p">}</span>
   
 <span class="kd">func</span> <span class="nf">NewServiceContext</span><span class="p">(</span><span class="nx">c</span> <span class="nx">config</span><span class="p">.</span><span class="nx">Config</span><span class="p">)</span> <span class="o">*</span><span class="nx">ServiceContext</span> <span class="p">{</span>
   <span class="nx">conn</span> <span class="o">:=</span> <span class="nx">sqlx</span><span class="p">.</span><span class="nf">NewMysql</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Mysql</span><span class="p">.</span><span class="nx">DataSource</span><span class="p">)</span>
   <span class="k">return</span> <span class="o">&amp;</span><span class="nx">ServiceContext</span><span class="p">{</span>
-      <span class="nx">Config</span><span class="p">:</span> <span class="nx">c</span><span class="p">,</span>
-      <span class="nx">OrderDatasModel</span><span class="p">:</span> <span class="nx">orderdatas</span><span class="p">.</span><span class="nf">NewOrderDatasModel</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">CacheRedis</span><span class="p">),</span>
+      <span class="nx">Config</span><span class="p">:</span>    <span class="nx">c</span><span class="p">,</span>
+      <span class="nx">CheckAuth</span><span class="p">:</span> <span class="nx">middleware</span><span class="p">.</span><span class="nf">NewCheckAuthMiddleware</span><span class="p">().</span><span class="nx">Handle</span><span class="p">,</span>
+      <span class="nx">OrderDatasModel</span><span class="p">:</span> <span class="nx">model</span><span class="p">.</span><span class="nf">NewOrderDatasModel</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">CacheRedis</span><span class="p">),</span>
+      <span class="nx">OrderDetailsModel</span><span class="p">:</span> <span class="nx">model</span><span class="p">.</span><span class="nf">NewOrderDetailsModel</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">CacheRedis</span><span class="p">),</span>
   <span class="p">}</span>
 <span class="p">}</span>
+  
   
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
-<h4 id="填充业务逻辑">填充业务逻辑</h4>
-<ul>
-<li><code>vim service/data/cmd/api/internal/logic/orders/createorderLogic.go</code></li>
-</ul>
-<h3 id="错误处理">错误处理</h3>
+<h4 id="错误处理">错误处理</h4>
 <h5 id="自定义错误">自定义错误</h5>
+<h6 id="全局错误处理">全局错误处理</h6>
 <ul>
 <li>
-<p>首先在common中添加一个error.go文件</p>
+<p>首先在common中添加一个全局错误处理error_handler.go文件</p>
 </li>
 <li>
 <div class="highlight"><div class="chroma">
@@ -465,7 +594,86 @@ goctl api go -api data.api -dir .
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">mkdir -p common/errorx
-touch error.go
+touch error_handler.go
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">errorx</span>
+  
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&#34;github.com/tal-tech/go-zero/core/jsonx&#34;</span>
+  <span class="s">&#34;net/http&#34;</span>
+<span class="p">)</span>
+  
+<span class="c1">// ErrorHandler 处理自定义错误
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">ErrorHandler</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">err</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">*</span><span class="nx">CodeError</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nf">Data</span><span class="p">()</span>
+  <span class="k">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">,</span> <span class="nx">CodeErrorResponse</span><span class="p">{</span>
+          <span class="nx">Code</span><span class="p">:</span> <span class="nx">defaultCode</span><span class="p">,</span>
+          <span class="nx">Message</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">(),</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+  
+<span class="c1">// NotFoundHandler 处理 404 错误
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NotFoundHandler</span><span class="p">()</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">http</span><span class="p">.</span><span class="nf">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nf">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nf">Header</span><span class="p">().</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;text/json; charset=utf-8&#34;</span><span class="p">)</span>
+      <span class="nx">msg</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">jsonx</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">CodeErrorResponse</span><span class="p">{</span><span class="nx">Code</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;not found&#34;</span><span class="p">})</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+  
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h6 id="基础错误文件">基础错误文件</h6>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">touch base_error.go
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -538,96 +746,80 @@ touch error.go
 </span><span class="lnt">64
 </span><span class="lnt">65
 </span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">errorx</span>
   
 <span class="kn">import</span> <span class="p">(</span>
-  <span class="s">&#34;github.com/tal-tech/go-zero/core/jsonx&#34;</span>
   <span class="s">&#34;net/http&#34;</span>
 <span class="p">)</span>
   
 <span class="kd">const</span> <span class="p">(</span>
-  <span class="nx">defaultCode</span> <span class="p">=</span> <span class="mi">35000</span>
-  
+  <span class="nx">defaultCode</span> <span class="p">=</span> <span class="mo">000</span>
+  <span class="c1">// OrdersModule 数据中心功能模块(编号区间 301 ~ 350)
+</span><span class="c1"></span>  <span class="nx">OrdersModule</span> <span class="p">=</span> <span class="mi">301</span> <span class="o">+</span> <span class="kc">iota</span> <span class="c1">// 订单模块编号
+</span><span class="c1"></span>  <span class="nx">MaterialsModule</span>
 <span class="p">)</span>
   
 <span class="kd">var</span> <span class="p">(</span>
-  <span class="c1">//ErrorDataNotFound = errors.New(&#34;data not found&#34;)
-</span><span class="c1"></span>  <span class="c1">//ErrorUserNotFound = errors.New(&#34;用户不存在&#34;)
-</span><span class="c1"></span>  <span class="c1">//ErrorNoRequiredParameters = errors.New(&#34;必要参数不能为空&#34;)
-</span><span class="c1"></span>  <span class="c1">//ErrorUserOperation = errors.New(&#34;用户正在操作中，请稍后重试&#34;)
-</span><span class="c1"></span>  <span class="c1">//ErrorServer = NewCodeError(&#34;系统错误，请联系管理员&#34;)
-</span><span class="c1"></span>  <span class="c1">//ErrorMysqlOperation = NewCodeError(350000, &#34;数据库操作错误&#34;)
+<span class="c1">//ErrorDataNotFound = errors.New(&#34;data not found&#34;)
+</span><span class="c1">//ErrorUserNotFound = errors.New(&#34;用户不存在&#34;)
+</span><span class="c1">//ErrorNoRequiredParameters = errors.New(&#34;必要参数不能为空&#34;)
+</span><span class="c1">//ErrorUserOperation = errors.New(&#34;用户正在操作中，请稍后重试&#34;)
+</span><span class="c1">//ErrorServer = NewCodeError(&#34;系统错误，请联系管理员&#34;)
+</span><span class="c1">//ErrorMysqlOperation = NewCodeError(350000, &#34;数据库操作错误&#34;)
 </span><span class="c1"></span><span class="p">)</span>
   
+<span class="cm">/*
+</span><span class="cm">HTTP Status状态码要求与实际的状态码一致
+</span><span class="cm">code：6位（前3位为功能模块编号(moduleCode)，后3位为业务错误编号(bizCode)）
+</span><span class="cm">message：返回成功或者失败或者异常信息
+</span><span class="cm">data：返回的数据信息（使用小驼峰命名法作为属性标识符）
+</span><span class="cm"> */</span>
+  
 <span class="kd">type</span> <span class="nx">CodeError</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">Status</span> <span class="kt">int</span> <span class="s">`json:&#34;status&#34;`</span>
-  <span class="nx">Code</span> <span class="kt">int</span> <span class="s">`json:&#34;code&#34;`</span>
-  <span class="nx">Message</span> <span class="kt">string</span> <span class="s">`json:&#34;message&#34;`</span>
-<span class="p">}</span>
+  <span class="nx">statusCode</span> <span class="kt">int</span> <span class="c1">// http status code
+</span><span class="c1"></span>  <span class="nx">moduleCode</span> <span class="kt">int</span> <span class="c1">// 模块号码
+</span><span class="c1"></span>  <span class="nx">bizCode</span> <span class="kt">int</span> <span class="c1">// 业务错误号码
+</span><span class="c1"></span>  <span class="nx">message</span> <span class="kt">string</span> <span class="c1">// 信息
+</span><span class="c1"></span><span class="p">}</span>
   
 <span class="kd">type</span> <span class="nx">CodeErrorResponse</span> <span class="kd">struct</span> <span class="p">{</span>
   <span class="nx">Code</span> <span class="kt">int</span> <span class="s">`json:&#34;code&#34;`</span>
   <span class="nx">Message</span> <span class="kt">string</span> <span class="s">`json:&#34;message&#34;`</span>
 <span class="p">}</span>
   
-<span class="c1">//ErrorHandler 处理自定义错误
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">ErrorHandler</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
-  <span class="k">switch</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">err</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">case</span> <span class="o">*</span><span class="nx">CodeError</span><span class="p">:</span>
-      <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Status</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nf">Data</span><span class="p">()</span>
-  <span class="k">default</span><span class="p">:</span>
-      <span class="k">return</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">,</span> <span class="nx">CodeErrorResponse</span><span class="p">{</span>
-          <span class="nx">Code</span><span class="p">:</span> <span class="nx">defaultCode</span><span class="p">,</span>
-          <span class="nx">Message</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">(),</span>
-      <span class="p">}</span>
-  <span class="p">}</span>
+<span class="kd">func</span> <span class="nf">NewCodeError</span><span class="p">(</span><span class="nx">httpStatusCode</span><span class="p">,</span> <span class="nx">moduleCode</span><span class="p">,</span> <span class="nx">bizCode</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&amp;</span><span class="nx">CodeError</span><span class="p">{</span><span class="nx">statusCode</span><span class="p">:</span> <span class="nx">httpStatusCode</span><span class="p">,</span><span class="nx">moduleCode</span><span class="p">:</span> <span class="nx">moduleCode</span><span class="p">,</span> <span class="nx">bizCode</span><span class="p">:</span> <span class="nx">bizCode</span><span class="p">,</span> <span class="nx">message</span><span class="p">:</span> <span class="nx">message</span><span class="p">}</span>
 <span class="p">}</span>
   
   
-<span class="kd">func</span> <span class="nf">NewCodeError</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">code</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&amp;</span><span class="nx">CodeError</span><span class="p">{</span><span class="nx">Status</span><span class="p">:</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">Code</span><span class="p">:</span> <span class="nx">code</span><span class="p">,</span> <span class="nx">Message</span><span class="p">:</span> <span class="nx">message</span><span class="p">}</span>
+<span class="c1">// NewDefaultError TODO 默认错误
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NewDefaultError</span><span class="p">(</span><span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nf">NewCodeError</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">,</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="nx">defaultCode</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
 <span class="p">}</span>
   
-<span class="kd">func</span> <span class="nf">NewDefaultError</span><span class="p">(</span><span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nf">NewCodeError</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">,</span> <span class="nx">defaultCode</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
-<span class="p">}</span>
-  
-<span class="c1">// NotFoundHandler 处理404错误
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NotFoundHandler</span><span class="p">()</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">http</span><span class="p">.</span><span class="nf">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">w</span><span class="p">.</span><span class="nf">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
-      <span class="nx">w</span><span class="p">.</span><span class="nf">Header</span><span class="p">().</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;text/json; charset=utf-8&#34;</span><span class="p">)</span>
-      <span class="nx">msg</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">jsonx</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">CodeError</span><span class="p">{</span><span class="nx">Code</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;not found&#34;</span><span class="p">})</span>
-      <span class="nx">w</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
-  <span class="p">})</span>
+<span class="c1">// NotFindDataError 未查找到数据返回错误
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NotFindDataError</span><span class="p">(</span><span class="nx">moduleCode</span><span class="p">,</span> <span class="nx">bizCode</span> <span class="kt">int</span><span class="p">,</span><span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nf">NewCodeError</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">moduleCode</span><span class="p">,</span> <span class="nx">bizCode</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
 <span class="p">}</span>
   
 <span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">CodeError</span><span class="p">)</span> <span class="nf">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Message</span>
+  <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span>
 <span class="p">}</span>
   
 <span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">CodeError</span><span class="p">)</span> <span class="nf">Data</span><span class="p">()</span> <span class="o">*</span><span class="nx">CodeErrorResponse</span> <span class="p">{</span>
   <span class="k">return</span> <span class="o">&amp;</span><span class="nx">CodeErrorResponse</span><span class="p">{</span>
-      <span class="nx">Code</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Status</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Code</span><span class="p">,</span>
-      <span class="nx">Message</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Message</span><span class="p">,</span>
+      <span class="nx">Code</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">moduleCode</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">bizCode</span><span class="p">,</span>
+      <span class="nx">Message</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>开启自定义错误</p>
-</li>
+</ul>
+<h6 id="开启自定义错误">开启自定义错误</h6>
+<ul>
 <li>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -704,7 +896,7 @@ touch error.go
   <span class="nx">conf</span><span class="p">.</span><span class="nf">MustLoad</span><span class="p">(</span><span class="o">*</span><span class="nx">configFile</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">c</span><span class="p">)</span>
   
   <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">svc</span><span class="p">.</span><span class="nf">NewServiceContext</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
-  <span class="c1">//
+  <span class="c1">// 自定义 404 错误返回
 </span><span class="c1"></span>  <span class="nx">server</span> <span class="o">:=</span> <span class="nx">rest</span><span class="p">.</span><span class="nf">MustNewServer</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">RestConf</span><span class="p">,</span> <span class="nx">rest</span><span class="p">.</span><span class="nf">WithNotFoundHandler</span><span class="p">(</span><span class="nx">errorx</span><span class="p">.</span><span class="nf">NotFoundHandler</span><span class="p">()))</span>
   <span class="k">defer</span> <span class="nx">server</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
   <span class="c1">// 自定义错误返回
@@ -732,11 +924,11 @@ touch error.go
 </div>
 </div></li>
 </ul>
-<h3 id="日志配置">日志配置</h3>
-<h4 id="api配置">api配置</h4>
+<h4 id="日志配置">日志配置</h4>
+<h5 id="api-日志配置">api 日志配置</h5>
 <ul>
 <li>
-<p><code>vim etc/data-api.yaml</code></p>
+<p><code>vim etc/order-api.yaml</code></p>
 </li>
 <li>
 <div class="highlight"><div class="chroma">
@@ -760,7 +952,7 @@ touch error.go
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">Name</span><span class="p">:</span><span class="w"> </span>data-api<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">Name</span><span class="p">:</span><span class="w"> </span>order-api<span class="w">
 </span><span class="w"></span><span class="k">Host</span><span class="p">:</span><span class="w"> </span><span class="m">0.0.0.0</span><span class="w">
 </span><span class="w"></span><span class="k">Port</span><span class="p">:</span><span class="w"> </span><span class="m">8888</span><span class="w">
 </span><span class="w"></span>//<span class="w"> </span>数据库配置<span class="w">
@@ -772,7 +964,7 @@ touch error.go
 </span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span>node<span class="w">
 </span><span class="w"></span>//<span class="w"> </span>日志配置<span class="w">
 </span><span class="w"></span><span class="k">Log</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">ServiceName</span><span class="p">:</span><span class="w"> </span>csp<span class="w">
+</span><span class="w">  </span><span class="k">ServiceName</span><span class="p">:</span><span class="w"> </span>order<span class="w">
 </span><span class="w">  </span><span class="k">Mode</span><span class="p">:</span><span class="w"> </span>file<span class="w">
 </span><span class="w">  </span><span class="k">Path</span><span class="p">:</span><span class="w"> </span>logs<span class="w">
 </span><span class="w">  </span><span class="k">Level</span><span class="p">:</span><span class="w"> </span>info<span class="w">
@@ -780,7 +972,163 @@ touch error.go
 </span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li></li>
+<li>
+<p><code>vim internal/config</code></p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Config</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">rest</span><span class="p">.</span><span class="nx">RestConf</span>
+  <span class="nx">Mysql</span> <span class="kd">struct</span><span class="p">{</span>
+      <span class="nx">DataSource</span> <span class="kt">string</span>
+  <span class="p">}</span>
+  <span class="nx">CacheRedis</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">CacheConf</span>
+  <span class="nx">Log</span> <span class="nx">logx</span><span class="p">.</span><span class="nx">LogConf</span> <span class="c1">// 日志配置
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="编写业务逻辑">编写业务逻辑</h3>
+<p>业务逻辑代码都在 <code>service/order/api/cmd/internal/logic/</code></p>
+<ul>
+<li><code>vim service/order/api/cmd/internal/logic/orders/create_orderLogic.go</code></li>
+</ul>
+<h3 id="运行项目">运行项目</h3>
+<ul>
+<li>直接在项目服务目录下运行</li>
+<li><code>go run order.go -f etc/order-api.yaml</code></li>
+</ul>
+<h3 id="docker-运行">docker 运行</h3>
+<h4 id="生成-dockerfile">生成 Dockerfile</h4>
+<ul>
+<li>
+<p>在 api 业务目录下生成 Dockerfile</p>
+</li>
+<li>
+<p>切换到服务目录下 <code>cd /csp/service/order/api/cmd</code></p>
+</li>
+<li>
+<p>生成 Dokcerfile <code>goctl docker -go order.go</code></p>
+</li>
+<li>
+<p>修改 Dockerfile 文件，适合项目运行</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> golang:alpine AS builder</span><span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">LABEL</span> <span class="nv">stage</span><span class="o">=</span>gobuilder
+  
+<span class="k">ENV</span> CGO_ENABLED <span class="m">0</span><span class="err">
+</span><span class="err"></span><span class="k">ENV</span> GOOS linux<span class="err">
+</span><span class="err"></span><span class="k">ENV</span> GOPROXY https://goproxy.cn,direct<span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /build/zero</span><span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">ADD</span> go.mod .<span class="err">
+</span><span class="err"></span><span class="k">ADD</span> go.sum .<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> go mod download<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span><span class="err"></span><span class="c"># 修改此路径，因为要复制 go.mod go.sum，所以要在go.mod 所在目录下运行 docker build 构建镜像 ，</span><span class="err">
+</span><span class="err"></span><span class="c"># 或者修改上面的复制go.mod 文件的地址也可以 </span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> service/order/api/cmd/etc /app/etc<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> go build -ldflags<span class="o">=</span><span class="s2">&#34;-s -w&#34;</span> -o /app/order service/order/api/cmd/order.go<span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> alpine</span><span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">RUN</span> apk update --no-cache <span class="o">&amp;&amp;</span> apk add --no-cache ca-certificates tzdata<span class="err">
+</span><span class="err"></span><span class="k">ENV</span> TZ Asia/Shanghai<span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/order /app/order<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /app/etc /app/etc<span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8888</span><span class="err">
+</span><span class="err"></span>  <span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;./order&#34;</span><span class="p">,</span> <span class="s2">&#34;-f&#34;</span><span class="p">,</span> <span class="s2">&#34;etc/order-api.yaml&#34;</span><span class="p">]</span><span class="err">
+</span><span class="err"></span>  <span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="构建镜像">构建镜像</h4>
+<ul>
+<li>
+<p>在 go.mod 所在的目录下构建镜像</p>
+</li>
+<li>
+<p><code>cd ostar/csp</code></p>
+</li>
+<li>
+<p><code>docker build -t order:v1 -f service/order/api/cmd/Dockerfile .</code></p>
+</li>
+<li>
+<p>查看生成的镜像</p>
+</li>
+<li>
+<p><code>docker image ls</code></p>
+</li>
+</ul>
+<h4 id="启动服务">启动服务</h4>
+<p><code>docker run --rm -it -p 8888:8888 order:v1</code></p>
+<blockquote>
+<p>&ndash;rm ：停止后删除容器</p>
+<p>&ndash;i ：以交互模式运行容器，通常与 -t 同时使用；</p>
+<p>&ndash;t：为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
+</blockquote>
+<h4 id="测试服务">测试服务</h4>
+<ul>
+<li><code>curl -i http://localhost:8888/order/1</code></li>
+<li>返回数据，成功</li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
