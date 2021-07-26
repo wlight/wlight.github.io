@@ -3,7 +3,14 @@
         <title>所有文章 - 携壶酌流霞</title>
         <link>https://blog.wormlight.cn/posts/</link>
         <description>所有文章 | 携壶酌流霞</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 18 Jun 2021 14:11:53 &#43;0800</lastBuildDate><atom:link href="https://blog.wormlight.cn/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 26 Jul 2021 09:22:12 &#43;0800</lastBuildDate><atom:link href="https://blog.wormlight.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Mysql&#43;mybatis对为null的值赋默认值（ifnull）</title>
+    <link>https://blog.wormlight.cn/mysql-mybatis%E5%AF%B9%E4%B8%BAnull%E7%9A%84%E5%80%BC%E8%B5%8B%E9%BB%98%E8%AE%A4%E5%80%BCifnull/</link>
+    <pubDate>Mon, 26 Jul 2021 09:22:12 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.wormlight.cn/mysql-mybatis%E5%AF%B9%E4%B8%BAnull%E7%9A%84%E5%80%BC%E8%B5%8B%E9%BB%98%E8%AE%A4%E5%80%BCifnull/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>RestTemplate使用小结</title>
     <link>https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
     <pubDate>Fri, 18 Jun 2021 14:11:53 &#43;0800</pubDate>
@@ -65,13 +72,6 @@
     <pubDate>Thu, 11 Mar 2021 08:52:52 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Java笔记_浮点数运算</title>
-    <link>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/</link>
-    <pubDate>Wed, 10 Mar 2021 16:37:03 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
