@@ -28,7 +28,7 @@
 不允许两行具有相同的索引值。但可以都为NULL，笔者亲试。 
 如果现有数据中存在重复的键值，则数据库不允许将新创建的唯一索引与表一起保存。当新数据将使表中的键值重复时，数据库也拒绝接受此数据。每个表可以有多个唯一索引.
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602231127178-357619770.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200602231127178-357619770.png)
 
 ### **普通索引**
 
@@ -38,11 +38,11 @@
 
 我们先看一下测试表的结构 主键为id
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602233304417-2029473985.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200602233304417-2029473985.png)
 
  表中现有测试数据
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230014293-706553605.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603230014293-706553605.png)
 
 **case 1:**含有ON DUPLICATE KEY UPDATE的INSERT语句中包含主键，且主键在表中已存在，执行更新操作
 
@@ -60,7 +60,7 @@ ON DUPLICATEKEY UPDATE
 	company = 'company03';
 ```
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230608489-780604513.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603230608489-780604513.png)
 
  如果update语句后的主键是就是insert语句后的主键或者没有填写主键，那么会更新当前记录。
 
@@ -76,9 +76,9 @@ ON DUPLICATEKEY UPDATE
 	company = 'company03';
 ```
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230418000-373564700.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603230418000-373564700.png)
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230444326-1133671963.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603230444326-1133671963.png)
 
 **case 2:**含有ON DUPLICATE KEY UPDATE的INSERT语句中包含主键，且主键在表中不存在，那么会直接执行插入操作，不执行update之后的语句。
 
@@ -94,9 +94,9 @@ ON DUPLICATEKEY UPDATE
 	company = 'company044';
 ```
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231413112-1106658812.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603231413112-1106658812.png)
 
- ![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231445248-1030845605.png)
+ ![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603231445248-1030845605.png)
 
  **case 3:**含有ON DUPLICATE KEY UPDATE的INSERT语句中不包含主键
 
@@ -112,9 +112,9 @@ ON DUPLICATEKEY UPDATE
 	company = 'company044';
 ```
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231635459-936500742.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603231635459-936500742.png)
 
- ![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231702063-72556442.png)
+ ![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603231702063-72556442.png)
 
 ## **补充**
 
@@ -122,7 +122,7 @@ ON DUPLICATEKEY UPDATE
 
 例如，我们在这里给applyInfo表的phone字段添加一个唯一索引
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231919996-1008280377.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603231919996-1008280377.png)
 
  **case 1:**这里我们可以看到insert语句后面的phone字段为“phone05”，已经在表中存在，那么则会执行update方法。
 
@@ -137,9 +137,9 @@ ON DUPLICATEKEY UPDATE
 	company = 'company044';
 ```
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232224470-1090950247.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603232224470-1090950247.png)
 
- ![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232235439-1312466321.png)
+ ![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603232235439-1312466321.png)
 
  **case 2:**同样，不存在则会执行插入操作
 
@@ -154,9 +154,9 @@ ON DUPLICATEKEY UPDATE
 	company = 'company066';
 ```
 
-![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232355607-437856883.png)
+![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603232355607-437856883.png)
 
- ![img](https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232414702-1804121725.png)
+ ![img](https://cdn.jsdelivr.net/gh/wlight/cdn-images/blog-images/1320942-20200603232414702-1804121725.png)
 
 ## MyBatis语句示例
 
