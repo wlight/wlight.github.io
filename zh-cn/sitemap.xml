@@ -2,26 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.wormlight.cn/mysql-mybatis%E5%AF%B9%E4%B8%BAnull%E7%9A%84%E5%80%BC%E8%B5%8B%E9%BB%98%E8%AE%A4%E5%80%BCifnull/</loc><lastmod>2021-07-26T09:22:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://blog.wormlight.cn/posts/</loc><lastmod>2021-07-26T09:22:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.wormlight.cn/en/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://blog.wormlight.cn/posts/"
-                    /></url><url>
-            <loc>https://blog.wormlight.cn/</loc><lastmod>2021-07-26T09:22:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.wormlight.cn/en/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://blog.wormlight.cn/"
-                    /></url><url>
-            <loc>https://blog.wormlight.cn/categories/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/categories/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://blog.wormlight.cn/en/categories/"
@@ -30,11 +11,19 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/categories/"
                     /></url><url>
-            <loc>https://blog.wormlight.cn/tags/java/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.wormlight.cn/categories/java/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.wormlight.cn/tags/springboot/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.wormlight.cn/tags/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://blog.wormlight.cn/tags/java/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/categories/java/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/posts/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://blog.wormlight.cn/en/posts/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://blog.wormlight.cn/posts/"
+                    /></url><url>
+            <loc>https://blog.wormlight.cn/tags/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://blog.wormlight.cn/en/tags/"
@@ -43,6 +32,19 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/tags/"
                     /></url><url>
+            <loc>https://blog.wormlight.cn/</loc><lastmod>2021-07-27T14:41:57&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://blog.wormlight.cn/en/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://blog.wormlight.cn/"
+                    /></url><url>
+            <loc>https://blog.wormlight.cn/go%E8%AF%AD%E8%A8%80%E5%BE%81%E7%A8%8Bno1/</loc><lastmod>2021-07-26T14:05:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/mysql-mybatis%E5%AF%B9%E4%B8%BAnull%E7%9A%84%E5%80%BC%E8%B5%8B%E9%BB%98%E8%AE%A4%E5%80%BCifnull/</loc><lastmod>2021-07-26T09:22:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://blog.wormlight.cn/tags/springboot/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/tags/git/</loc><lastmod>2021-05-17T15:02:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/categories/git/</loc><lastmod>2021-05-17T15:02:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/tags/github/</loc><lastmod>2021-05-17T15:02:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

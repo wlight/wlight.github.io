@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Mybatis大量数据的插入或更新操作方案思考 - 携壶酌流霞</title><meta name="Description" content="书山有路勤为径，学海无涯苦作舟"><meta property="og:title" content="Mybatis大量数据的插入或更新操作方案思考" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" />
+<meta property="og:image" content="https://blog.wormlight.cn/logo.png"/>
+<meta property="article:published_time" content="2021-07-27T14:41:57+08:00" />
+<meta property="article:modified_time" content="2021-07-27T14:41:57+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.wormlight.cn/logo.png"/>
+
+<meta name="twitter:title" content="Mybatis大量数据的插入或更新操作方案思考"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="携壶酌流霞">
+<meta name="apple-mobile-web-app-title" content="携壶酌流霞"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" /><link rel="prev" href="https://blog.wormlight.cn/go%E8%AF%AD%E8%A8%80%E5%BE%81%E7%A8%8Bno1/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mybatis大量数据的插入或更新操作方案思考",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.wormlight.cn\/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/blog.wormlight.cn\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "java","wordcount":  1768 ,
+        "url": "https:\/\/blog.wormlight.cn\/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83\/","datePublished": "2021-07-27T14:41:57+08:00","dateModified": "2021-07-27T14:41:57+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/blog.wormlight.cn\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "wormside"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="携壶酌流霞">携壶酌流霞</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="/about/" title="About"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="携壶酌流霞">携壶酌流霞</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/wlight" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="/about/" title="About">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Mybatis大量数据的插入或更新操作方案思考</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wormside</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1768 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" class="leancloud_visitors" data-flag-title="Mybatis大量数据的插入或更新操作方案思考">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#解决方案">解决方案</a></li>
+    <li><a href="#索引"><strong>索引</strong></a>
+      <ul>
+        <li><a href="#主键索引"><strong>主键索引</strong></a></li>
+        <li><a href="#唯一索引"><strong>唯一索引</strong></a></li>
+        <li><a href="#普通索引"><strong>普通索引</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#on-duplicate-key-update-的使用">ON DUPLICATE KEY UPDATE 的使用</a></li>
+    <li><a href="#补充"><strong>补充</strong></a></li>
+    <li><a href="#mybatis语句示例">MyBatis语句示例</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#注意">注意</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><a href="https://www.cnblogs.com/sueyyyy/p/13034526.html" target="_blank" rel="noopener noreffer">Mybatis大量数据的插入或更新操作方案思考(使用ON DUPLICATE KEY UPDATE)</a></p>
+<h2 id="背景">背景</h2>
+<p>　　最近需要向数据库中插入5w+数据，但是在插入的过程中需要先根据某个字段进行判断，如果数据库中已经存在记录则进行更新，否则插入。通常这种情况下，我们会在代码中编写一条查询语句，查询数据库中是否存在相关记录。然后通过if条件判断是进行更新还是进行插入。这种情况对于数据量不多的时候是感觉不到很大的差异的。但是在数据量特别大的情况下，如果操作每一条数据之前都要先查询数据库再判断是更新还是插入，就需要对数据库进行多次的连接和断开操作，极大的降低了系统性能同时增加了服务器的压力。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>　　我们可以将判断逻辑交给数据库去完成，这样原先两次的连接的操作只需要一次就可以实现。经过查阅发现Mysql中的 <em>ON DUPLICATE KEY UPDATE</em> 语句可以实现该需求。</p>
+<h2 id="索引"><strong>索引</strong></h2>
+<p>在使用该语法之前，我们先回忆一下mysql中主键索引，唯一索引和普通索引的关系。</p>
+<h3 id="主键索引"><strong>主键索引</strong></h3>
+<p>主键索引是唯一索引的特殊类型。 
+数据库表通常有一列或列组合，其值用来唯一标识表中的每一行。该列称为表的主键。 
+在数据库关系图中为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的。当在查询中使用主键索引时，它还允许快速访问数据。主键索引不能为空。每个表只能有一个主键</p>
+<h3 id="唯一索引"><strong>唯一索引</strong></h3>
+<p>不允许两行具有相同的索引值。但可以都为NULL，笔者亲试。 
+如果现有数据中存在重复的键值，则数据库不允许将新创建的唯一索引与表一起保存。当新数据将使表中的键值重复时，数据库也拒绝接受此数据。每个表可以有多个唯一索引.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602231127178-357619770.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602231127178-357619770.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602231127178-357619770.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602231127178-357619770.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602231127178-357619770.png"
+        title="img" /></p>
+<h3 id="普通索引"><strong>普通索引</strong></h3>
+<p>一般的索引结构，可以在条件删选时加快查询效率，索引字段的值可以重复，可以为空值</p>
+<h2 id="on-duplicate-key-update-的使用">ON DUPLICATE KEY UPDATE 的使用</h2>
+<p>我们先看一下测试表的结构 主键为id</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602233304417-2029473985.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602233304417-2029473985.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602233304417-2029473985.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602233304417-2029473985.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200602233304417-2029473985.png"
+        title="img" /></p>
+<p>表中现有测试数据</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230014293-706553605.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230014293-706553605.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230014293-706553605.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230014293-706553605.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230014293-706553605.png"
+        title="img" /></p>
+<p>**case 1:**含有ON DUPLICATE KEY UPDATE的INSERT语句中包含主键，且主键在表中已存在，执行更新操作</p>
+<p>如果update语句后的主键不是insert语句后的主键，且表中已存在，那么更新或者插入操作都不会成功执行，会抛出主键冲突异常。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">applyinfo</span> <span class="p">(</span> <span class="n">id</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="k">position</span><span class="p">,</span> <span class="n">company</span> <span class="p">)</span>
+<span class="k">VALUES</span>
+	<span class="p">(</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;name03&#39;</span><span class="p">,</span> <span class="s1">&#39;phone03&#39;</span><span class="p">,</span> <span class="s1">&#39;position03&#39;</span><span class="p">,</span> <span class="s1">&#39;company03&#39;</span> <span class="p">)</span> 
+<span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span> 
+	<span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>
+	<span class="k">position</span> <span class="o">=</span> <span class="s1">&#39;position02&#39;</span><span class="p">,</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;name03&#39;</span><span class="p">,</span>
+	<span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;phone03&#39;</span><span class="p">,</span>
+	<span class="n">company</span> <span class="o">=</span> <span class="s1">&#39;company03&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230608489-780604513.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230608489-780604513.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230608489-780604513.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230608489-780604513.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230608489-780604513.png"
+        title="img" /></p>
+<p>如果update语句后的主键是就是insert语句后的主键或者没有填写主键，那么会更新当前记录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">applyinfo</span> <span class="p">(</span> <span class="n">id</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="k">position</span><span class="p">,</span> <span class="n">company</span> <span class="p">)</span>
+<span class="k">VALUES</span>
+	<span class="p">(</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;name03&#39;</span><span class="p">,</span> <span class="s1">&#39;phone03&#39;</span><span class="p">,</span> <span class="s1">&#39;position03&#39;</span><span class="p">,</span> <span class="s1">&#39;company03&#39;</span> <span class="p">)</span> 
+<span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span> 
+	<span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+	<span class="k">position</span> <span class="o">=</span> <span class="s1">&#39;position03&#39;</span><span class="p">,</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;name03&#39;</span><span class="p">,</span>
+	<span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;phone03&#39;</span><span class="p">,</span>
+	<span class="n">company</span> <span class="o">=</span> <span class="s1">&#39;company03&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230418000-373564700.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230418000-373564700.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230418000-373564700.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230418000-373564700.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230418000-373564700.png"
+        title="img" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230444326-1133671963.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230444326-1133671963.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230444326-1133671963.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230444326-1133671963.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603230444326-1133671963.png"
+        title="img" /></p>
+<p>**case 2:**含有ON DUPLICATE KEY UPDATE的INSERT语句中包含主键，且主键在表中不存在，那么会直接执行插入操作，不执行update之后的语句。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">applyinfo</span> <span class="p">(</span> <span class="n">id</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="k">position</span><span class="p">,</span> <span class="n">company</span> <span class="p">)</span>
+<span class="k">VALUES</span>
+	<span class="p">(</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;name04&#39;</span><span class="p">,</span> <span class="s1">&#39;phone04&#39;</span><span class="p">,</span> <span class="s1">&#39;position04&#39;</span><span class="p">,</span> <span class="s1">&#39;company04&#39;</span> <span class="p">)</span> 
+<span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span> 
+	<span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span>
+	<span class="k">position</span> <span class="o">=</span> <span class="s1">&#39;position044&#39;</span><span class="p">,</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;name044&#39;</span><span class="p">,</span>
+	<span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;phone044&#39;</span><span class="p">,</span>
+	<span class="n">company</span> <span class="o">=</span> <span class="s1">&#39;company044&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231413112-1106658812.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231413112-1106658812.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231413112-1106658812.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231413112-1106658812.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231413112-1106658812.png"
+        title="img" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231445248-1030845605.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231445248-1030845605.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231445248-1030845605.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231445248-1030845605.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231445248-1030845605.png"
+        title="img" /></p>
+<p>**case 3:**含有ON DUPLICATE KEY UPDATE的INSERT语句中不包含主键</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">applyinfo</span> <span class="p">(</span> <span class="n">username</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="k">position</span><span class="p">,</span> <span class="n">company</span> <span class="p">)</span>
+<span class="k">VALUES</span>
+	<span class="p">(</span> <span class="s1">&#39;name05&#39;</span><span class="p">,</span> <span class="s1">&#39;phone05&#39;</span><span class="p">,</span> <span class="s1">&#39;position05&#39;</span><span class="p">,</span> <span class="s1">&#39;company05&#39;</span> <span class="p">)</span> 
+<span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span> 
+	<span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span>
+	<span class="k">position</span> <span class="o">=</span> <span class="s1">&#39;position044&#39;</span><span class="p">,</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;name044&#39;</span><span class="p">,</span>
+	<span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;phone044&#39;</span><span class="p">,</span>
+	<span class="n">company</span> <span class="o">=</span> <span class="s1">&#39;company044&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231635459-936500742.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231635459-936500742.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231635459-936500742.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231635459-936500742.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231635459-936500742.png"
+        title="img" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231702063-72556442.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231702063-72556442.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231702063-72556442.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231702063-72556442.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231702063-72556442.png"
+        title="img" /></p>
+<h2 id="补充"><strong>补充</strong></h2>
+<p><strong>ON DUPLICATE KEY UPDATE的INSERT语句的规则除了适用于主键之外，还适用于唯一索引字段</strong></p>
+<p>例如，我们在这里给applyInfo表的phone字段添加一个唯一索引</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231919996-1008280377.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231919996-1008280377.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231919996-1008280377.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231919996-1008280377.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603231919996-1008280377.png"
+        title="img" /></p>
+<p>**case 1:**这里我们可以看到insert语句后面的phone字段为“phone05”，已经在表中存在，那么则会执行update方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">applyinfo</span> <span class="p">(</span> <span class="n">username</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">company</span> <span class="p">)</span>
+<span class="k">VALUES</span>
+	<span class="p">(</span> <span class="s1">&#39;name05&#39;</span><span class="p">,</span> <span class="s1">&#39;phone05&#39;</span><span class="p">,</span> <span class="s1">&#39;position05&#39;</span><span class="p">,</span> <span class="s1">&#39;company05&#39;</span> <span class="p">)</span>
+<span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span> 
+	<span class="n">position</span> <span class="o">=</span> <span class="s1">&#39;position044&#39;</span><span class="p">,</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;name044&#39;</span><span class="p">,</span>
+	<span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;phone044&#39;</span><span class="p">,</span>
+	<span class="n">company</span> <span class="o">=</span> <span class="s1">&#39;company044&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232224470-1090950247.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232224470-1090950247.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232224470-1090950247.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232224470-1090950247.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232224470-1090950247.png"
+        title="img" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232235439-1312466321.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232235439-1312466321.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232235439-1312466321.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232235439-1312466321.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232235439-1312466321.png"
+        title="img" /></p>
+<p>**case 2:**同样，不存在则会执行插入操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">applyinfo</span> <span class="p">(</span> <span class="n">username</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="k">position</span><span class="p">,</span> <span class="n">company</span> <span class="p">)</span>
+<span class="k">VALUES</span>
+	<span class="p">(</span> <span class="s1">&#39;name05&#39;</span><span class="p">,</span> <span class="s1">&#39;phone06&#39;</span><span class="p">,</span> <span class="s1">&#39;position05&#39;</span><span class="p">,</span> <span class="s1">&#39;company05&#39;</span> <span class="p">)</span>
+<span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span> 
+	<span class="k">position</span> <span class="o">=</span> <span class="s1">&#39;position066&#39;</span><span class="p">,</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;name066&#39;</span><span class="p">,</span>
+	<span class="n">phone</span> <span class="o">=</span> <span class="s1">&#39;phone066&#39;</span><span class="p">,</span>
+	<span class="n">company</span> <span class="o">=</span> <span class="s1">&#39;company066&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232355607-437856883.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232355607-437856883.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232355607-437856883.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232355607-437856883.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232355607-437856883.png"
+        title="img" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232414702-1804121725.png"
+        data-srcset="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232414702-1804121725.png, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232414702-1804121725.png 1.5x, https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232414702-1804121725.png 2x"
+        data-sizes="auto"
+        alt="https://img2020.cnblogs.com/blog/1320942/202006/1320942-20200603232414702-1804121725.png"
+        title="img" /></p>
+<h2 id="mybatis语句示例">MyBatis语句示例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="nf">saveOrUpdateTrans</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">BisOwnRisk</span><span class="o">&gt;</span> <span class="n">bisOwnRiskList</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在mybatis中进行批量增加或修改的sql为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">bis_own_risk_trans</span> <span class="p">(</span>
+    <span class="n">username</span><span class="p">,</span>
+    <span class="n">idNo</span><span class="p">,</span>
+    <span class="n">phone</span><span class="p">,</span>
+    <span class="n">deviceId</span><span class="p">,</span>
+    <span class="n">ip</span><span class="p">,</span>
+    <span class="n">bankCard</span>
+    <span class="p">)</span>
+    <span class="k">VALUES</span>
+    <span class="o">&lt;</span><span class="n">foreach</span> <span class="n">collection</span><span class="o">=</span><span class="s2">&#34;list&#34;</span> <span class="n">item</span><span class="o">=</span><span class="s2">&#34;item&#34;</span> <span class="k">index</span><span class="o">=</span><span class="s2">&#34;index&#34;</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&#34;,&#34;</span><span class="o">&gt;</span>
+      <span class="p">(</span>
+      <span class="o">#</span><span class="err">{</span><span class="n">item</span><span class="p">.</span><span class="n">username</span><span class="err">}</span><span class="p">,</span> <span class="o">#</span><span class="err">{</span><span class="n">item</span><span class="p">.</span><span class="n">idNo</span><span class="err">}</span><span class="p">,</span> <span class="o">#</span><span class="err">{</span><span class="n">item</span><span class="p">.</span><span class="n">phone</span><span class="err">}</span><span class="p">,</span>
+      <span class="o">#</span><span class="err">{</span><span class="n">item</span><span class="p">.</span><span class="n">deviceId</span><span class="err">}</span><span class="p">,</span>  <span class="o">#</span><span class="err">{</span><span class="n">item</span><span class="p">.</span><span class="n">ip</span><span class="err">}</span><span class="p">,</span> <span class="o">#</span><span class="err">{</span><span class="n">item</span><span class="p">.</span><span class="n">bankCard</span><span class="err">}</span>
+      <span class="p">)</span>
+    <span class="o">&lt;/</span><span class="n">foreach</span><span class="o">&gt;</span>
+    <span class="k">ON</span> <span class="n">DUPLICATEKEY</span> <span class="k">UPDATE</span>
+    <span class="n">username</span> <span class="o">=</span><span class="k">VALUES</span><span class="p">(</span><span class="n">username</span><span class="p">),</span>
+    <span class="n">idNo</span> <span class="o">=</span><span class="k">VALUES</span><span class="p">(</span><span class="n">idNo</span><span class="p">),</span>
+    <span class="n">phone</span> <span class="o">=</span><span class="k">VALUES</span><span class="p">(</span><span class="n">phone</span><span class="p">),</span>
+    <span class="n">deviceId</span> <span class="o">=</span><span class="k">VALUES</span><span class="p">(</span><span class="n">deviceId</span><span class="p">),</span>
+    <span class="n">ip</span> <span class="o">=</span><span class="k">VALUES</span><span class="p">(</span><span class="n">ip</span><span class="p">),</span>
+    <span class="n">bankCard</span> <span class="o">=</span><span class="k">VALUES</span><span class="p">(</span><span class="n">bankCard</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
+<ul>
+<li>ON DUPLICATE KEY UPDATE需要有在INSERT语句中有存在主键或者唯一索引的列，并且对应的数据已经在表中才会执行更新操作。而且如果要更新的字段是主键或者唯一索引，不能和表中已有的数据重复，否则插入更新都失败。</li>
+<li>不管是更新还是增加语句都不允许将主键或者唯一索引的对应字段的数据变成表中已经存在的数据。</li>
+</ul>
+<h2 id="注意">注意</h2>
+<p>　　**在并行且开启事务的时候使用INSERT ON DUPLICATE KEY UPDATE语句时，会出现死锁。**关于使用 ON DUPLICATE KEY UPDATE语句造成死锁现象的分析可以参考如下链接。</p>
+<p>　　<em><a href="https://www.cnblogs.com/sueyyyy/p/13047035.html" target="_blank" rel="noopener noreffer">Mysql死锁排查：insert on duplicate死锁一次排查分析过程</a></em></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-07-27</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" data-title="Mybatis大量数据的插入或更新操作方案思考" data-hashtags="java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" data-title="Mybatis大量数据的插入或更新操作方案思考"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" data-title="Mybatis大量数据的插入或更新操作方案思考"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.wormlight.cn/mybatis%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8F%92%E5%85%A5%E6%88%96%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%96%B9%E6%A1%88%E6%80%9D%E8%80%83/" data-title="Mybatis大量数据的插入或更新操作方案思考" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/go%E8%AF%AD%E8%A8%80%E5%BE%81%E7%A8%8Bno1/" class="prev" rel="prev" title="Go语言征程No1"><i class="fas fa-angle-left fa-fw"></i>Go语言征程No1</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.74.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wormside</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
