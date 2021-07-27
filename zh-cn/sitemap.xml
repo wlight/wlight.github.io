@@ -41,6 +41,8 @@
                     hreflang="zh-cn"
                     href="https://blog.wormlight.cn/"
                     /></url><url>
+            <loc>https://blog.wormlight.cn/tags/go/</loc><lastmod>2021-07-26T14:05:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://blog.wormlight.cn/categories/go/</loc><lastmod>2021-07-26T14:05:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.wormlight.cn/go%E8%AF%AD%E8%A8%80%E5%BE%81%E7%A8%8Bno1/</loc><lastmod>2021-07-26T14:05:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.wormlight.cn/mysql-mybatis%E5%AF%B9%E4%B8%BAnull%E7%9A%84%E5%80%BC%E8%B5%8B%E9%BB%98%E8%AE%A4%E5%80%BCifnull/</loc><lastmod>2021-07-26T09:22:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.wormlight.cn/resttemplate%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</loc><lastmod>2021-06-18T14:11:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -50,8 +52,6 @@
             <loc>https://blog.wormlight.cn/tags/github/</loc><lastmod>2021-05-17T15:02:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/git%E5%90%84%E6%8C%87%E4%BB%A4%E7%9A%84%E6%9C%AC%E8%B4%A8%E7%9C%9F%E6%98%AF%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E5%95%8A/</loc><lastmod>2021-05-17T15:02:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/about/</loc><lastmod>2021-05-17T14:46:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.wormlight.cn/tags/go/</loc><lastmod>2021-05-12T10:01:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://blog.wormlight.cn/categories/go/</loc><lastmod>2021-05-12T10:01:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/go-zore%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</loc><lastmod>2021-05-12T10:01:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/go-zore%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc><lastmod>2021-03-23T10:11:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://blog.wormlight.cn/java%E7%AC%94%E8%AE%B0_%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/</loc><lastmod>2021-03-11T16:14:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
